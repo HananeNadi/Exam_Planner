@@ -1,0 +1,36 @@
+### Update Personnel
+PUT http://localhost:8080/api/personnel/1
+Content-Type: application/json
+
+{
+  "firstName": "hanane"
+}
+
+### Delete Personnel
+DELETE http://localhost:8080/api/personnel/1
+Content-Type: application/json
+
+
+
+### Create Personnel
+POST http://localhost:8080/api/personnel
+Content-Type: application/json
+
+{
+  "firstName": "HH",
+  "lastName": "bb",
+  "cin": "XNZ45",
+  "grade": "directeur"
+}
+
+
+
+### Get Personnel
+GET http://localhost:8080/api/personnel/2
+Accept: application/json
+
+### Get All Personnel
+GET http://localhost:8080/api/personnel
+Accept: application/json
+
+###

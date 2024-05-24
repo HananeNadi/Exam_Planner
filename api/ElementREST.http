@@ -1,0 +1,32 @@
+### Update Educationalelement
+PUT http://localhost:8080/api/Educationalelement/2
+Content-Type: application/json
+
+{ "idElement": 2,
+  "title": "java"
+}
+
+### Delete Educationalelement
+DELETE http://localhost:8080/api/Educationalelement/1
+Content-Type: application/json
+
+
+
+### Create Educationalelement
+POST http://localhost:8080/api/Educationalelement
+Content-Type: application/json
+
+{
+  "title": "DW"
+}
+
+
+### Get Educationalelement
+GET http://localhost:8080/api/Educationalelement/2
+Accept: application/json
+
+### Get All Educationalelement
+GET http://localhost:8080/api/Educationalelement
+Accept: application/json
+
+###
