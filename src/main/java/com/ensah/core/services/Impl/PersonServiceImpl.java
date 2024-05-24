@@ -24,17 +24,20 @@ public class PersonServiceImpl implements IPersonService {
     IPersonDao personDao;
 
     public void addPerson(PersonDTO personDTO) {
+        System.out.println("Received type: " + personDTO.getType());
         Person person;
-        if (personDTO.getSpeciality() != null) {
+        if ("Professor".equals(personDTO.getType())){
             Professor professor = new Professor();
+            professor.setType(personDTO.getType()); // Set the type attribute
             professor.setFirstName(personDTO.getFirstName());
             professor.setLastName(personDTO.getLastName());
             professor.setCin(personDTO.getCin());
             professor.setSpeciality(personDTO.getSpeciality());
             // Set other professor-specific fields here
             person = professor;
-        } else if (personDTO.getGrade() != null) {
+        } else if ("Administrator".equals(personDTO.getType())) {
             Administrator administrator = new Administrator();
+            administrator.setType(personDTO.getType()); // Set the type attribute
             administrator.setFirstName(personDTO.getFirstName());
             administrator.setLastName(personDTO.getLastName());
             administrator.setCin(personDTO.getCin());

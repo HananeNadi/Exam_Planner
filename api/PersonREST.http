@@ -19,8 +19,10 @@ Content-Type: application/json
 {
   "firstName": "HH",
   "lastName": "bb",
-  "cin": "XNZ45",
-  "grade": "directeur"
+  "cin": "XNZ485",
+  "type": "Administrator",
+  "grade": "dict"
+
 }
 
 

@@ -28,6 +28,10 @@ public class Person {
     @NotBlank(message = "This field should not be empty !")
     private String lastName;
 
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
+    private String type;
+
     @Column(unique = true)
     @NotNull
     @NotBlank(message = "This field should not be empty !")
