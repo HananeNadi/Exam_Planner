@@ -21,6 +21,10 @@ public class PersonDTO {
     @NotNull @NotBlank(message = "This field should not be empty!")
     private String cin;
 
+    @NotNull @NotBlank(message = "This field should not be empty!")
+    private String email;
+
+
     // Fields specific to Administrator
     private String grade;
 
