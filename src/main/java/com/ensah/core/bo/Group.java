@@ -20,14 +20,19 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGroup;
-    @NotNull
-    @NotBlank(message = "This field should not be empty !")
+
     @Size(min = 5, max = 20, message= "Title must be between 5 and 20 characters")
     private String title;
+
 
     @Size(min = 10, max = 200, message= "Description must be between 10 and 200 characters")
     private String description;
 
-    @ManyToMany(mappedBy = "groups")
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Groups_Profs",
+            joinColumns = @JoinColumn(name = "id_Group"),
+            inverseJoinColumns = @JoinColumn(name = "id_Professor"))
     private List<Professor> professors=new ArrayList<>();
+
 }

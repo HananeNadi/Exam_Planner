@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IRoomDao extends JpaRepository<Room, Long> {
-    Room getPersonByNameRoom(String nameRoom);
+    Room getRoomByNameRoom(String nameRoom);
 
 
 }

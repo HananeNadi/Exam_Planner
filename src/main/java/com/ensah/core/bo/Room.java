@@ -18,13 +18,10 @@ public class  Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRoom;
-    @NotBlank @NotNull
-    private String name;
+    private String nameRoom;
 
-    @NotBlank @NotNull
     private String type;
 
-    @NotBlank @NotNull
     private String place;
     @Min(value = 10) @Max(value = 300)
     private Long size;

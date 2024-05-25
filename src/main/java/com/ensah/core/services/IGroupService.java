@@ -19,4 +19,10 @@ public interface IGroupService {
 
     public Group getGroupByTitle(String title);
 
+//    Group addProfessorToGroup(Long groupId, Long professorId);
+
+    public void addProfessorsToGroup(Long groupId, List<Long> professorIds);
+
+//    void addOneProfessorToGroup(Long groupId, Long professorId);
+
 }

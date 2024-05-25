@@ -1,12 +1,15 @@
 package com.ensah.core.bo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static jakarta.persistence.FetchType.EAGER;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "IdProfessor")
@@ -29,12 +32,10 @@ public class Professor extends Person {
     private Sector sector;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Groups_Profs",
-            joinColumns = @JoinColumn(name = "id_Professor"),
-            inverseJoinColumns = @JoinColumn(name = "id_Group"))
-    private List<Group> groups = new ArrayList<>();
 
+
+    @ManyToMany(fetch = EAGER, mappedBy = "professors") @JsonIgnore
+    private List<Group> groups;
 
 
     @ManyToMany(cascade = CascadeType.ALL)

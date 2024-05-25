@@ -17,6 +17,6 @@ public interface IRoomService {
 
     public Room getRoomById(Long id);
 
-    public Room getPersonByNameRoom(String nameRoom);
+    public Room getRoomByNameRoom(String nameRoom);
 
 }

@@ -18,10 +18,11 @@ public class Educationalelement {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "idLevel")
+    @JoinColumn(name = "id_level")
     private Level level;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "element_type")
     private ElementType elementType;
 
 

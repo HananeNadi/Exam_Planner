@@ -17,13 +17,15 @@ POST http://localhost:8080/api/personnel
 Content-Type: application/json
 
 {
-  "firstName": "HH",
-  "lastName": "bb",
-  "cin": "XNZ485",
-  "type": "Administrator",
-  "grade": "dict"
+  "firstName": "hamza",
+  "lastName": "hn",
+  "cin": "XNZos7t7",
+  "type": "Professor",
+  "speciality": "math"
 
 }
+
+
 
 
 

@@ -1,9 +1,9 @@
 ### Update Educationalelement
-PUT http://localhost:8080/api/Educationalelement/2
+PUT http://localhost:8080/api/Educationalelement/1
 Content-Type: application/json
 
-{ "idElement": 2,
-  "title": "java"
+{
+  "title": "update"
 }
 
 ### Delete Educationalelement
@@ -17,7 +17,12 @@ POST http://localhost:8080/api/Educationalelement
 Content-Type: application/json
 
 {
-  "title": "DW"
+  "title": "Your Element Title",
+  "level": {
+    "idLevel": 1,
+    "title": "Preparatory cycle 1"
+  },
+  "elementType": "ELEMENT"
 }
 
 
