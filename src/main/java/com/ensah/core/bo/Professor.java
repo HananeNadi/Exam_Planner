@@ -7,9 +7,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import static jakarta.persistence.FetchType.EAGER;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "IdProfessor")
@@ -35,7 +36,7 @@ public class Professor extends Person {
 
     @ManyToMany(mappedBy = "professors",fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Group> groups;
+    private Set<Group> groups;
 
 
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -43,17 +44,16 @@ public class Professor extends Person {
             joinColumns = @JoinColumn(name = "id_Professor"),
             inverseJoinColumns = @JoinColumn(name = "id_Monitor"))
     @JsonIgnore
-    private List<Monitoring> monitors = new ArrayList<>();
-
+    private Set<Monitoring> monitors = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "coordinator",fetch = FetchType.LAZY)
-    private List<Monitoring> monitorins;
+    private Set<Monitoring> monitorins;
 
 
     @JsonIgnore
     @OneToMany(mappedBy = "professor",fetch = FetchType.LAZY)
-    private List<Educationalelement> elements;
+    private Set<Educationalelement> elements;
 
 
 

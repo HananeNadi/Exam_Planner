@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -30,5 +31,5 @@ public class  Room {
 
     @JsonIgnore
     @OneToMany(mappedBy = "room",fetch = FetchType.LAZY)
-    private List<Monitoring> monitorins;
+    private Set<Monitoring> monitorins;
 }

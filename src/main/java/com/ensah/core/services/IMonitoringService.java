@@ -3,6 +3,7 @@ package com.ensah.core.services;
 import com.ensah.core.bo.Monitoring;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IMonitoringService {
     public void addMonitoring(Monitoring monitoring);
@@ -16,4 +17,6 @@ public interface IMonitoringService {
 
 
     public List<Monitoring> getMonitoringByDate(String dateExam);
+
+    public void addProfessorsToMonitoring(Long monitoringId, Set<Long> professorIds);
 }

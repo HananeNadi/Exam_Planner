@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/Group")
@@ -69,8 +70,7 @@ public class GroupController {
 //    }
 
     @PutMapping("/{groupId}/addProfessortogroup")
-    public ResponseEntity<Group> addProfessorsToGroup(@PathVariable Long groupId, @RequestBody List<Long> professorIds) {
-//        System.out.println(professorIds.getClass().toString() + professorIds);
+    public ResponseEntity<Group> addProfessorsToGroup(@PathVariable Long groupId, @RequestBody Set<Long> professorIds) {
         groupService.addProfessorsToGroup(groupId, professorIds);
         return new ResponseEntity(HttpStatus.OK);
     }

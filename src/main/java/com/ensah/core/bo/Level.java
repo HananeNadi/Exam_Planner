@@ -2,12 +2,10 @@ package com.ensah.core.bo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,5 +19,5 @@ public class Level {
 
     @JsonIgnore
     @OneToMany(mappedBy = "level",fetch = FetchType.LAZY)
-    private List<Educationalelement> elemnts;
+    private Set<Educationalelement> elemnts;
 }

@@ -2,12 +2,10 @@ package com.ensah.core.bo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,5 +20,5 @@ public class Departement {
 
     @JsonIgnore
     @OneToMany(mappedBy = "departement",fetch = FetchType.LAZY)
-    private List<Professor> professors;
+    private Set<Professor> professors;
 }

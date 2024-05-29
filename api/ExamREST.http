@@ -9,7 +9,6 @@ Content-Type: application/json
   "element": {
     "idElement": 1
   },
-  "session": "NORMAL",
   "semester": "SPRING",
-  "examType": "DS1"
+  "examType": "DS"
 }

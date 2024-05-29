@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -69,7 +70,7 @@ public class GroupServiceImpl implements IGroupService {
     }
 
     @Override
-    public void addProfessorsToGroup(Long groupId, List<Long> professorIds) {
+    public void addProfessorsToGroup(Long groupId, Set<Long> professorIds) {
         Group group = getGroupById(groupId);
         if (group != null) {
             for (Long professorId : professorIds) {
@@ -85,9 +86,8 @@ public class GroupServiceImpl implements IGroupService {
         } else {
             throw new IllegalArgumentException("Group with id " + groupId + " does not exist");
         }
-
-
     }
+
 
 }
 

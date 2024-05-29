@@ -1,17 +1,3 @@
-### Update Room
-PUT http://localhost:8080/api/Room/2
-Content-Type: application/json
-
-{ "nameRoom": "salleeeeeeeeeeeeeee",
-  "size": 42
-}
-
-### Delete Room
-DELETE http://localhost:8080/api/Room/1
-Content-Type: application/json
-
-
-
 ### Create Room
 POST http://localhost:8080/api/Room
 Content-Type: application/json
@@ -25,6 +11,19 @@ Content-Type: application/json
 
 
 }
+
+### Update Room
+PUT http://localhost:8080/api/Room/2
+Content-Type: application/json
+
+{ "nameRoom": "salleeeeeeeeeeeeeee",
+  "size": 42
+}
+
+### Delete Room
+DELETE http://localhost:8080/api/Room/1
+Content-Type: application/json
+
 
 
 ### Get Room

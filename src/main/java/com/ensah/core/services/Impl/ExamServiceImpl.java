@@ -1,8 +1,6 @@
 package com.ensah.core.services.Impl;
 
-import com.ensah.core.bo.Educationalelement;
 import com.ensah.core.bo.Exam;
-import com.ensah.core.bo.Professor;
 import com.ensah.core.bo.Session;
 import com.ensah.core.dao.IExamDao;
 import com.ensah.core.services.IExamService;
@@ -29,18 +27,13 @@ public class ExamServiceImpl implements IExamService {
             exam.setSession(Session.NORMAL);
         }
 
-
-
         examDao.save(exam);
 
     }
 
-
-
     @Override
     public void updateExam(Long examId, Exam exam) {
                 examDao.save(exam);
-
 
     }
 
@@ -61,10 +54,6 @@ public class ExamServiceImpl implements IExamService {
     public Exam getExamById(Long id) {
         return examDao.findById(id).get();
     }
-
-
-
-
 
 
     //TO _ DO

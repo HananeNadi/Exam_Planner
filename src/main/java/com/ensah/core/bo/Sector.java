@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -22,5 +23,5 @@ public class Sector {
 
     @JsonIgnore
     @OneToMany(mappedBy = "sector",fetch = FetchType.LAZY)
-    private List<Professor> professors;
+    private Set<Professor> professors;
 }

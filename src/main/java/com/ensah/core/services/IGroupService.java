@@ -3,6 +3,7 @@ package com.ensah.core.services;
 import com.ensah.core.bo.Group;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface IGroupService {
@@ -21,7 +22,7 @@ public interface IGroupService {
 
 //    Group addProfessorToGroup(Long groupId, Long professorId);
 
-    public void addProfessorsToGroup(Long groupId, List<Long> professorIds);
+    public void addProfessorsToGroup(Long groupId, Set<Long> professorIds);
 
 //    void addOneProfessorToGroup(Long groupId, Long professorId);
 

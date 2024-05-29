@@ -1,22 +1,24 @@
 package com.ensah.core.services.Impl;
 
-import com.ensah.core.bo.Educationalelement;
-import com.ensah.core.bo.Exam;
-import com.ensah.core.bo.Monitoring;
-import com.ensah.core.bo.Professor;
+import com.ensah.core.bo.*;
 import com.ensah.core.dao.IExamDao;
 import com.ensah.core.dao.IMonitoringDao;
+import com.ensah.core.dao.IPersonDao;
 import com.ensah.core.services.IMonitoringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class MonitoringSeviceImpl implements IMonitoringService {
     @Autowired
     IMonitoringDao monitoringDao;
+
+    @Autowired
+    IPersonDao personDao;
     @Autowired
     IExamDao examDao;
 
@@ -45,7 +47,8 @@ public class MonitoringSeviceImpl implements IMonitoringService {
 
     @Override
     public void updateMonitoring(Long idMonitor, Monitoring monitoring) {
-        monitoringDao.save(monitoring);
+                monitoringDao.save(monitoring);
+
 
     }
 
@@ -57,9 +60,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
     @Override
     public void deleteMonitoring(Long id) {
         if (getMonitoringById(id) != null) {
-            monitoringDao.deleteById(id);
-        }
-
+            monitoringDao.deleteById(id);}
     }
 
     @Override
@@ -67,7 +68,40 @@ public class MonitoringSeviceImpl implements IMonitoringService {
         return monitoringDao.findById(id).get();
     }
 
+    @Override
     public List<Monitoring> getMonitoringByDate(String dateExam) {
         return monitoringDao.findByDateExam(dateExam);
     }
+
+    @Override
+    public void addProfessorsToMonitoring(Long monitoringId, Set<Long> professorIds) {
+        Monitoring monitoring = getMonitoringById(monitoringId);
+        if (monitoring != null) {
+            for (Long professorId : professorIds) {
+                Optional<Person> personOptional = personDao.findById(professorId);
+                if (personOptional.isPresent()) {
+                    Person person = personOptional.get();
+                    if (person.getType().equals("Professor")) {
+                        Professor professor = (Professor) person;
+                        monitoring.getProfessors().add(professor);
+                    } else {
+                        throw new IllegalArgumentException("Person with id " + professorId + " is not a Professor");
+                    }
+                } else {
+                    throw new IllegalArgumentException("Person with id " + professorId + " does not exist");
+                }
+            }
+            monitoringDao.save(monitoring);
+        } else {
+            throw new IllegalArgumentException("Monitoring session with id " + monitoringId + " does not exist");
+        }
+    }
+
+
+
+
+
+
+
+
 }

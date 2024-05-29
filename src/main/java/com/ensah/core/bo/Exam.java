@@ -1,13 +1,11 @@
 package com.ensah.core.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -28,9 +26,8 @@ public class Exam {
 
     //monitoring-exam
     @JsonIgnore
-
     @OneToMany(mappedBy = "exam",fetch = FetchType.LAZY)
-    private List<Monitoring> monitorins;
+    private Set<Monitoring> monitorins;
 
 
     //element - exam

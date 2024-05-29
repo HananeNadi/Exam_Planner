@@ -1,3 +1,26 @@
+### Create Personnel
+POST http://localhost:8080/api/personnel
+Content-Type: application/json
+
+
+{
+  "firstName": "hamza",
+  "lastName": "mt",
+  "cin": "XNZoes7sjv8",
+  "type": "Administrator",
+  "grade": "secretaire"
+}
+
+//{
+//  "firstName": "hamza",
+//  "lastName": "hn",
+//  "cin": "XNZos7sjv8",
+//  "type": "Professor",
+//  "speciality": "uml",
+//  "idDepartement": 1,
+//  "idSector": 1
+//}
+
 ### Update Personnel
 PUT http://localhost:8080/api/personnel/1
 Content-Type: application/json
@@ -9,35 +32,6 @@ Content-Type: application/json
 ### Delete Personnel
 DELETE http://localhost:8080/api/personnel/1
 Content-Type: application/json
-
-
-
-### Create Personnel
-POST http://localhost:8080/api/personnel
-Content-Type: application/json
-
-
-{
-  "firstName": "hamza",
-  "lastName": "mt",
-  "cin": "XNZoes7sjv8",
-  "type": "Administrator",
-  "grade": "Gestion"
-}
-
-//{
-//  "firstName": "hamza",
-//  "lastName": "hn",
-//  "cin": "XNZos7sjv8",
-//  "type": "Professor",
-//  "speciality": "java",
-//  "idDepartement": 1,
-//  "idSector": 1
-//}
-
-
-
-
 
 ### Get Personnel
 GET http://localhost:8080/api/personnel/1

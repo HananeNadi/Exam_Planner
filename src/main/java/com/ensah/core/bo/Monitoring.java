@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,7 +22,7 @@ public class Monitoring {
 
     @ManyToMany(mappedBy = "monitors",fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Professor> professors=new ArrayList<>();
+    private Set<Professor> professors=new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_Cordinator")

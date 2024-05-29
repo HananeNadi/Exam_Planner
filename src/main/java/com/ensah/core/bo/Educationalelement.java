@@ -2,12 +2,12 @@ package com.ensah.core.bo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -47,7 +47,7 @@ public class Educationalelement {
     //element - exam
     @JsonIgnore
     @OneToMany(mappedBy = "element",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Exam> exams;
+    private Set<Exam> exams;
 
 
 }
