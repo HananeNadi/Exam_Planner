@@ -33,7 +33,6 @@ public class Exam {
     //element - exam
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_element")
-    @JsonIgnore
     private Educationalelement element;
 
 

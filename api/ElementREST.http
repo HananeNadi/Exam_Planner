@@ -3,7 +3,7 @@ POST http://localhost:8080/api/Educationalelement
 Content-Type: application/json
 
 {
-  "title": "java",
+  "title": "uml",
   "level": {
     "idLevel": 2
   },

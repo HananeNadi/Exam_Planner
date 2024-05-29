@@ -19,8 +19,10 @@ public class Monitoring {
     private String dateExam;
 
 
-
-    @ManyToMany(mappedBy = "monitors",fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinTable(name = "Monitors_Profs",
+            joinColumns = @JoinColumn(name = "id_Monitoring"),
+            inverseJoinColumns = @JoinColumn(name = "id_Professor"))
     @JsonIgnore
     private Set<Professor> professors=new HashSet<>();
 

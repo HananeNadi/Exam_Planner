@@ -81,7 +81,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
                 Optional<Person> personOptional = personDao.findById(professorId);
                 if (personOptional.isPresent()) {
                     Person person = personOptional.get();
-                    if (person.getType().equals("Professor")) {
+                    if ("Professor".equals(person.getType())) {
                         Professor professor = (Professor) person;
                         monitoring.getProfessors().add(professor);
                     } else {
@@ -96,6 +96,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
             throw new IllegalArgumentException("Monitoring session with id " + monitoringId + " does not exist");
         }
     }
+
 
 
 

@@ -26,7 +26,6 @@ public class ExamServiceImpl implements IExamService {
         if (exam.getSession() == null) {
             exam.setSession(Session.NORMAL);
         }
-
         examDao.save(exam);
 
     }

@@ -39,8 +39,8 @@ public class MonitoringController {
 
     }
 
-    @PutMapping("/{monitoringId}/ddProfessorsToMonitoring")
-    public ResponseEntity<Monitoring> ddProfessorsToMonitoring(@PathVariable Long monitoringId, @RequestBody Set<Long> professorIds) {
+    @PutMapping("/{monitoringId}/addProfessorsToMonitoring")
+    public ResponseEntity<Monitoring>addProfessorsToMonitoring(@PathVariable Long monitoringId, @RequestBody Set<Long> professorIds) {
         monitoringService.addProfessorsToMonitoring(monitoringId, professorIds);
         return new ResponseEntity(HttpStatus.OK);
     }

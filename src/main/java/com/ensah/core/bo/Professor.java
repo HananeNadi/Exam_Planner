@@ -39,12 +39,9 @@ public class Professor extends Person {
     private Set<Group> groups;
 
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable(name = "Monitors_Profs",
-            joinColumns = @JoinColumn(name = "id_Professor"),
-            inverseJoinColumns = @JoinColumn(name = "id_Monitor"))
-    @JsonIgnore
-    private Set<Monitoring> monitors = new HashSet<>();
+    //monitor_professor
+    @ManyToMany(mappedBy = "professors",fetch = FetchType.LAZY)
+    private Set<Monitoring> monitors ;
 
     @JsonIgnore
     @OneToMany(mappedBy = "coordinator",fetch = FetchType.LAZY)
