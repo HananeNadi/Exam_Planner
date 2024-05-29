@@ -10,21 +10,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
 public class RoomServiceImpl implements IRoomService {
 
     @Autowired
-    IRoomDao RoomDao;
+    IRoomDao roomDao;
 
     public void addRoom(Room pRoom) {
-        RoomDao.save(pRoom);
+        roomDao.save(pRoom);
 
     }
 
     public void updateRoom(Long roomId, Room pRoom) {
-        Optional<Room> roomOptional = RoomDao.findById(roomId);
+        Optional<Room> roomOptional = roomDao.findById(roomId);
         if (roomOptional.isEmpty()) {
             throw new ResourceNotFoundException("Room", "id", roomId);
         }
@@ -46,27 +47,35 @@ public class RoomServiceImpl implements IRoomService {
             room.setPlace(pRoom.getPlace());
         }
 
-        RoomDao.save(room);
+        roomDao.save(room);
     }
 
     public List<Room> getAllRooms() {
-        return RoomDao.findAll();
+        return roomDao.findAll();
 
     }
 
     public void deleteRoom(Long id) {
         if (getRoomById(id) != null){
-            RoomDao.deleteById(id);
+            roomDao.deleteById(id);
         }
 
     }
 
     public Room getRoomById(Long id) {
-        return RoomDao.findById(id).get();
+        return roomDao.findById(id).get();
 
     }
 
     public Room getRoomByNameRoom(String NameRoom) {
-        return RoomDao.getRoomByNameRoom(NameRoom);
+        return roomDao.getRoomByNameRoom(NameRoom);
     }
+
+    public void assignMonitorsToRooms(Set<Room> rooms, int nbrMonitors) {
+        for (Room room : rooms) {
+
+            roomDao.save(room);
+        }
+    }
+
 }

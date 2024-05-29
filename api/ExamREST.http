@@ -8,7 +8,5 @@ Content-Type: application/json
   "preuve": "Path//",
   "element": {
     "idElement": 1
-  },
-  "semester": "SPRING",
-  "examType": "DS"
+  }
 }

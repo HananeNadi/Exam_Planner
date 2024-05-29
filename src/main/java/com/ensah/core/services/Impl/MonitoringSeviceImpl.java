@@ -25,7 +25,6 @@ public class MonitoringSeviceImpl implements IMonitoringService {
     @Override
     public void addMonitoring(Monitoring monitoring) {
         Exam exam = monitoring.getExam();
-
         if (exam != null) {
             Optional<Exam> optionalExam = examDao.findById(exam.getIdExam());
 

@@ -3,6 +3,7 @@ package com.ensah.core.services;
 import com.ensah.core.bo.Room;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface IRoomService {
@@ -18,5 +19,7 @@ public interface IRoomService {
     public Room getRoomById(Long id);
 
     public Room getRoomByNameRoom(String nameRoom);
+
+     public void assignMonitorsToRooms(Set<Room> rooms, int defaultInvigilators)
 
 }

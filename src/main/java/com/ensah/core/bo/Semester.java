@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public enum Semester {
-        SPRING , autumn
+        PRINTEMPS , AUTOMNE
 
 }
