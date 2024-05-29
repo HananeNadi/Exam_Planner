@@ -2,9 +2,9 @@ package com.ensah.core.bo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,40 +15,44 @@ import static jakarta.persistence.FetchType.EAGER;
 @PrimaryKeyJoinColumn(name = "IdProfessor")
 @Getter
 @Setter
+@RequiredArgsConstructor
 public class Professor extends Person {
 
 
     private String speciality;
-
-
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"professors", "hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_Departement")
     private Departement departement;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"professors", "hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_sector")
     private Sector sector;
 
 
 
-
-    @ManyToMany(fetch = EAGER, mappedBy = "professors") @JsonIgnore
+    @ManyToMany(mappedBy = "professors",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Group> groups;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "Monitors_Profs",
             joinColumns = @JoinColumn(name = "id_Professor"),
             inverseJoinColumns = @JoinColumn(name = "id_Monitor"))
+    @JsonIgnore
     private List<Monitoring> monitors = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "cordinator")
-    private List<Monitoring> Monitorins;
+    @JsonIgnore
+    @OneToMany(mappedBy = "coordinator",fetch = FetchType.LAZY)
+    private List<Monitoring> monitorins;
 
-    @OneToMany(mappedBy = "professor")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "professor",fetch = FetchType.LAZY)
     private List<Educationalelement> elements;
 
 

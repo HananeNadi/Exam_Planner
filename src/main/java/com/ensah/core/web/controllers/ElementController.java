@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("api/Educationalelement")
 public class ElementController {
 
     @Autowired
     IEducationalelementService educationalelementService;
+
 
     @PostMapping()
     public ResponseEntity<Educationalelement> addEducationalelementRS(@RequestBody Educationalelement educationalelement) {

@@ -1,5 +1,7 @@
 package com.ensah.core.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -26,6 +28,7 @@ public class  Room {
     @Min(value = 10) @Max(value = 300)
     private Long size;
 
-    @OneToMany(mappedBy = "room")
-    private List<Monitoring> Monitorins;
+    @JsonIgnore
+    @OneToMany(mappedBy = "room",fetch = FetchType.LAZY)
+    private List<Monitoring> monitorins;
 }

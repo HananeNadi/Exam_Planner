@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("api/personnel")
 @RequiredArgsConstructor
-
 public class PersonController {
 
     @Autowired

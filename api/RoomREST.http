@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ### Delete Room
-DELETE http://localhost:8080/api/Room/3
+DELETE http://localhost:8080/api/Room/1
 Content-Type: application/json
 
 
@@ -18,7 +18,11 @@ Content-Type: application/json
 
 {
   "nameRoom": "salle",
-  "size": 42
+  "size": 42,
+  "place": "Old block",
+  "type": "Classroom"
+
+
 
 }
 

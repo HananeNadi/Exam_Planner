@@ -30,4 +30,6 @@ public class PersonDTO {
 
     // Fields specific to Professor
     private String speciality;
+    private Long idDepartement;
+    private Long idSector;
 }

@@ -1,6 +1,8 @@
 package com.ensah.core.bo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,10 +19,13 @@ public class Educationalelement {
     private Long idElement;
     private String title;
 
+    //Element - Level
     @ManyToOne
     @JoinColumn(name = "id_level")
     private Level level;
 
+
+    //modul/element
     @Enumerated(EnumType.STRING)
     @Column(name = "element_type")
     private ElementType elementType;
@@ -32,13 +37,16 @@ public class Educationalelement {
     @JoinColumn(name = "idprofessor")
     private Professor professor;
 
+
+    //surveillance - coordonator
     @ManyToOne
     @JoinColumn(name = "idcoordinator")
     private Professor coordinator;
 
 
     //element - exam
-    @OneToMany(mappedBy = "element",cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "element",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Exam> exams;
 
 

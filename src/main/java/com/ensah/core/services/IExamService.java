@@ -17,7 +17,7 @@ public interface IExamService {
 
     public Exam getExamById(Long id);
 
-//    public Exam getExamByTitle(String title);
+
 
 
 

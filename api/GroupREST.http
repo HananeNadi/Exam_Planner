@@ -25,7 +25,7 @@ Content-Type: application/json
 
 
 ### Get Group
-GET http://localhost:8080/api/Group/2
+GET http://localhost:8080/api/Group/1
 Accept: application/json
 
 ### Get All Groups
@@ -36,7 +36,7 @@ Accept: application/json
 PUT http://localhost:8080/api/Group/1/addProfessortogroup
 Content-Type: application/json
 
-[1]
+[2]
 
 
 ###

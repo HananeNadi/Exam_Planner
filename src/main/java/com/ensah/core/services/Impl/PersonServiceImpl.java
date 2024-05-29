@@ -3,7 +3,9 @@ package com.ensah.core.services.Impl;
 import com.ensah.core.bo.Administrator;
 import com.ensah.core.bo.Person;
 import com.ensah.core.bo.Professor;
+import com.ensah.core.dao.IDepartementDao;
 import com.ensah.core.dao.IPersonDao;
+import com.ensah.core.dao.ISectorDao;
 import com.ensah.core.dto.PersonDTO;
 import com.ensah.core.web.exceptions.ResourceNotFoundException;
 import com.ensah.core.services.IPersonService;
@@ -22,6 +24,12 @@ public class PersonServiceImpl implements IPersonService {
 
     @Autowired
     IPersonDao personDao;
+    @Autowired
+    IDepartementDao departementDao;
+    @Autowired
+    ISectorDao sectorDao;
+
+
 
     public void addPerson(PersonDTO personDTO) {
         System.out.println("Received type: " + personDTO.getType());
@@ -33,6 +41,9 @@ public class PersonServiceImpl implements IPersonService {
             professor.setLastName(personDTO.getLastName());
             professor.setCin(personDTO.getCin());
             professor.setSpeciality(personDTO.getSpeciality());
+            professor.setDepartement(departementDao.findById(personDTO.getIdDepartement()).orElseThrow(() -> new IllegalArgumentException("Invalid departement ID")));
+            professor.setSector(sectorDao.findById(personDTO.getIdSector()).orElseThrow(() -> new IllegalArgumentException("Invalid Sector ID")));
+
             // Set other professor-specific fields here
             person = professor;
         } else if ("Administrator".equals(personDTO.getType())) {

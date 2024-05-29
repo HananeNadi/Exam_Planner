@@ -1,5 +1,6 @@
 package com.ensah.core.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,10 +30,11 @@ public class Group {
     private String description;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "Groups_Profs",
             joinColumns = @JoinColumn(name = "id_Group"),
             inverseJoinColumns = @JoinColumn(name = "id_Professor"))
+    @JsonIgnore
     private List<Professor> professors=new ArrayList<>();
 
 }

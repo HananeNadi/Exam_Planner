@@ -1,5 +1,7 @@
 package com.ensah.core.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,22 +17,26 @@ public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idExam;
-    private Date StartDate;
-    private Date finPreuve;
-    private Date finReel;
+    private String startTime;
+    private String endTime;
+    private String duration;
+    private String reelDuration;
     private String preuve;
     private String pv;
     private String Rapport;
 
 
     //monitoring-exam
-    @OneToMany(mappedBy = "exam")
-    private List<Monitoring> Monitorins;
+    @JsonIgnore
+
+    @OneToMany(mappedBy = "exam",fetch = FetchType.LAZY)
+    private List<Monitoring> monitorins;
 
 
     //element - exam
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_element")
+    @JsonIgnore
     private Educationalelement element;
 
 

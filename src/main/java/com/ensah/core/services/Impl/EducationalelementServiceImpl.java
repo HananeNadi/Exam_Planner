@@ -2,7 +2,10 @@ package com.ensah.core.services.Impl;
 
 import com.ensah.core.bo.Educationalelement;
 import com.ensah.core.bo.Group;
+import com.ensah.core.bo.Person;
+import com.ensah.core.bo.Professor;
 import com.ensah.core.dao.IEducationalelementDao;
+import com.ensah.core.dao.IPersonDao;
 import com.ensah.core.services.IEducationalelementService;
 import com.ensah.core.web.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +22,38 @@ public class EducationalelementServiceImpl implements IEducationalelementService
 
     @Autowired
     IEducationalelementDao elementDao;
+    @Autowired
+    IPersonDao personDao;
 
     public void addElement(Educationalelement element) {
-        elementDao.save(element);
+        // Set professor using the provided ID
+        if (element.getProfessor() != null && element.getProfessor().getIdPerson() != null) {
+            Person professor = personDao.findById(element.getProfessor().getIdPerson())
+                    .orElseThrow(() -> new ResourceNotFoundException("Professor", "id", element.getProfessor().getIdPerson()));
+            if (professor instanceof Professor) {
+                element.setProfessor((Professor) professor);
+            } else {
+                throw new IllegalArgumentException("Provided professor ID does not correspond to a Professor entity");
+            }
+        } else {
+            throw new IllegalArgumentException("Professor ID must be provided");
+        }
 
+        if (element.getCoordinator() != null && element.getCoordinator().getIdPerson() != null) {
+            Person coordinator = personDao.findById(element.getCoordinator().getIdPerson())
+                    .orElseThrow(() -> new ResourceNotFoundException("Professor", "id", element.getCoordinator().getIdPerson()));
+            if (coordinator instanceof Professor) {
+                element.setCoordinator((Professor) coordinator);
+            } else {
+                throw new IllegalArgumentException("Provided coordinator ID does not correspond to a Professor entity");
+            }
+        } else {
+            throw new IllegalArgumentException("Coordinator ID must be provided");
+        }
+
+        elementDao.save(element);
     }
+
 
     public void updateElement(Long elementId, Educationalelement pelement) {
         Optional<Educationalelement> educationalelementOptional = elementDao.findById(elementId);
@@ -40,6 +70,10 @@ public class EducationalelementServiceImpl implements IEducationalelementService
             educationalelement.setLevel(pelement.getLevel());
         }
 
+        if (pelement.getElementType() != null) {
+            educationalelement.setElementType(pelement.getElementType());
+        }
+
         if (pelement.getProfessor() != null) {
             educationalelement.setProfessor(pelement.getProfessor());
         }
@@ -47,6 +81,8 @@ public class EducationalelementServiceImpl implements IEducationalelementService
         if (pelement.getCoordinator() != null) {
             educationalelement.setCoordinator(pelement.getCoordinator());
         }
+
+        // Update any other fields as needed
 
         elementDao.save(educationalelement);
     }

@@ -1,5 +1,7 @@
 package com.ensah.core.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,23 +17,31 @@ public class Monitoring {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMonitor;
+    private String dateExam;
 
-    @ManyToMany(mappedBy = "monitors")
+
+
+    @ManyToMany(mappedBy = "monitors",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Professor> professors=new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_Cordinator")
-    private Professor cordinator;
+    @JsonIgnoreProperties({"monitorins", "hibernateLazyInitializer", "handler"})
+    private Professor coordinator;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_Administator")
+    @JsonIgnoreProperties({"monitorins", "hibernateLazyInitializer", "handler"})
     private Administrator administrator;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"monitorins", "hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_Room")
     private Room room;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"monitorins", "hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_Exam")
     private Exam exam;
 }

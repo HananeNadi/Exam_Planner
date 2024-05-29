@@ -1,6 +1,8 @@
 package com.ensah.core.bo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +19,8 @@ public class Departement {
     private Long idDepartement;
     private String title;
 
-    @OneToMany(mappedBy = "departement")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "departement",fetch = FetchType.LAZY)
     private List<Professor> professors;
 }

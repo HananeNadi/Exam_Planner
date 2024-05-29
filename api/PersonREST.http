@@ -16,21 +16,31 @@ Content-Type: application/json
 POST http://localhost:8080/api/personnel
 Content-Type: application/json
 
+
 {
   "firstName": "hamza",
-  "lastName": "hn",
-  "cin": "XNZos7t7",
-  "type": "Professor",
-  "speciality": "math"
-
+  "lastName": "mt",
+  "cin": "XNZoes7sjv8",
+  "type": "Administrator",
+  "grade": "Gestion"
 }
+
+//{
+//  "firstName": "hamza",
+//  "lastName": "hn",
+//  "cin": "XNZos7sjv8",
+//  "type": "Professor",
+//  "speciality": "java",
+//  "idDepartement": 1,
+//  "idSector": 1
+//}
 
 
 
 
 
 ### Get Personnel
-GET http://localhost:8080/api/personnel/2
+GET http://localhost:8080/api/personnel/1
 Accept: application/json
 
 ### Get All Personnel
