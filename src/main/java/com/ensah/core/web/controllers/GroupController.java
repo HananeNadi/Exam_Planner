@@ -20,9 +20,8 @@ public class GroupController {
     IGroupService groupService;
 
     @PostMapping()
-    public ResponseEntity<Group> addGroupRS(@RequestBody Group group) {
-        groupService.addGroup(group);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Long> addGroupRS(@RequestBody Group group) {
+        return ResponseEntity.ok(groupService.addGroup(group));
     }
 
 

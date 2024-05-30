@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface IGroupService {
 
-    public void addGroup(Group pGroup);
+    public Long addGroup(Group pGroup);
 
     public void updateGroup(Long groupId,Group pGroup);
 

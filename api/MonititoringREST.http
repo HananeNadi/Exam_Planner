@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "dateExam": "03-05-2024",
   "administrator": {
-    "idPerson": 3
+    "idPerson": 1
   },
   "coordinator": {
     "idPerson": 1
@@ -14,7 +14,7 @@ Content-Type: application/json
     "idRoom": 1
   },
   "exam": {
-    "idExam": 1
+    "idExam": 2
   }
 }
 

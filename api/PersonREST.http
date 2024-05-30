@@ -3,23 +3,23 @@ POST http://localhost:8080/api/personnel
 Content-Type: application/json
 
 
-{
-  "firstName": "hind",
-  "lastName": "mt",
-  "cin": "XNZoes7sjv8",
-  "type": "Administrator",
-  "grade": "secretaire"
-}
-
 //{
-//  "firstName": "hamza",
-//  "lastName": "hn",
-//  "cin": "XNZos7sjv8",
-//  "type": "Professor",
-//  "speciality": "uml",
-//  "idDepartement": 1,
-//  "idSector": 1
+//  "firstName": "hind",
+//  "lastName": "mt",
+//  "cin": "XNZoes7sjv8",
+//  "type": "Administrator",
+//  "grade": "secretaire"
 //}
+
+{
+  "firstName": "hamza",
+  "lastName": "hn",
+  "cin": "XNZos7sjv8",
+  "type": "Professor",
+  "speciality": "uml",
+  "idDepartement": 1,
+  "idSector": 1
+}
 
 ### Update Personnel
 PUT http://localhost:8080/api/personnel/1

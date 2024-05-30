@@ -11,7 +11,6 @@ VALUES ('Preparatory cycle 1'),
        ('Digital Transformation and Artificial Intelligence'),
        ('energy and renewable energies '),
        ('Water and Environmental  '),
-       ('Water and Environmental  '),
        ('Mechanical');
 
 INSERT INTO level (title)

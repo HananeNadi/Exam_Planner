@@ -20,6 +20,6 @@ public interface IRoomService {
 
     public Room getRoomByNameRoom(String nameRoom);
 
-     public void assignMonitorsToRooms(Set<Room> rooms, int defaultInvigilators)
+     public void assignMonitorsToRooms(Set<Room> rooms, int defaultInvigilators);
 
 }

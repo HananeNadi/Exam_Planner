@@ -24,8 +24,8 @@ public class GroupServiceImpl implements IGroupService {
     @Autowired
     IPersonDao personDao;
 
-    public void addGroup(Group pGroup) {
-        groupDao.save(pGroup);
+    public Long addGroup(Group pGroup) {
+        return groupDao.save(pGroup).getIdGroup();
 
     }
 
