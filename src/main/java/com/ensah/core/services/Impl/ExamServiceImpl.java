@@ -22,7 +22,7 @@ public class ExamServiceImpl implements IExamService {
     IExamDao examDao;
 
     @Override
-    public void addExam(Exam exam) {
+    public Long addExam(Exam exam) {
         if (exam.getDuration() == null || exam.getDuration().isEmpty()) {
             exam.setDuration("2h");
         }
@@ -44,7 +44,7 @@ public class ExamServiceImpl implements IExamService {
             exam.setExamType(month == 11 ? ExamType.DS : month == 1 ? ExamType.EXAM : ExamType.DS);
         }
 
-        examDao.save(exam);
+        return examDao.save(exam).getIdExam();
     }
 
 

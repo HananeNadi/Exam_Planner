@@ -46,7 +46,7 @@ public class Educationalelement {
 
     //element - exam
     @JsonIgnore
-    @OneToMany(mappedBy = "element",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "element",cascade = CascadeType.ALL)
     private Set<Exam> exams;
 
 

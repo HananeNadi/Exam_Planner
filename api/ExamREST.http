@@ -1,10 +1,12 @@
 ### Create Exam
 POST http://localhost:8080/api/Exam
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA5OTY1NiwiaWF0IjoxNzE3MDk2MDU2LCJzY29wZSI6IlJPTEVfVVNFUiJ9.bhnsLe8xs_Q71rrmMez3P3GDL8TiQo95TKn2V2N0cBbi41g_zjOjelVQIHqdluirXVsT650QJPD5fSGDJtjETt0wjaPGjlkt_uA0tTBhKUw9s_WACFBS1nwIZAQZDJ_9XfHesJW7gijqWJ7kjCBDUb5eBkZ9ty4Axdf5yTja9aQWKDaWZminIwpuAODDHgj4-bCEGAYDPaj86i6ZegSDtTMR37sSdATe55F-HEmlCUvDbsXxOl49JQ5TNRqS09hTmBthy96Q_AHd6mcyOf8jqw7tNxhFsNw_y6ZZg3yE9Pk9oFHDzBeSYbDBL7_rPpprwEQH9X5KJipD8ETq_1ZEsA
+
 
 {
-  "startTime": "8",
-  "endTime": "10",
+  "startTime": "10",
+  "endTime": "12",
   "preuve": "Path//",
   "element": {
     "idElement": 1

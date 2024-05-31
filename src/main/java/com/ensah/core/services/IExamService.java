@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IExamService {
 
-    public void addExam(Exam exam);
+    public Long addExam(Exam exam);
 
     public void updateExam(Long examId,Exam exam);
 

@@ -2,6 +2,7 @@ package com.ensah.core.bo;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
@@ -19,13 +20,19 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPerson;
 
+    @NotBlank
     private String firstName;
 
+    @NotBlank
     private String lastName;
 
+    @NotBlank
     private String type;
 
+    @NotBlank @Column(nullable = false, unique = true)
     private String cin;
+    @NotBlank @Column(nullable = false, unique = true)
+    private String email;
 
     @Override
     public String toString() {

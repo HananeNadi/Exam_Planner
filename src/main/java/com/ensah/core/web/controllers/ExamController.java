@@ -18,9 +18,9 @@ public class ExamController {
     IExamService examService;
 
     @PostMapping()
-    public ResponseEntity<Exam> addExamRS(@RequestBody Exam exam) {
-        examService.addExam(exam);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Long> addExamRS(@RequestBody Exam exam) {
+
+        return ResponseEntity.ok(examService.addExam(exam));
     }
 
 }

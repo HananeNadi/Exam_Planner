@@ -26,12 +26,12 @@ public class Exam {
 
     //monitoring-exam
     @JsonIgnore
-    @OneToMany(mappedBy = "exam",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "exam")
     private Set<Monitoring> monitorins;
 
 
     //element - exam
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_element")
     private Educationalelement element;
 

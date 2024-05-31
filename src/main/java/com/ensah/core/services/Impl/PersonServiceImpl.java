@@ -39,6 +39,7 @@ public class PersonServiceImpl implements IPersonService {
             professor.setType(personDTO.getType()); // Set the type attribute
             professor.setFirstName(personDTO.getFirstName());
             professor.setLastName(personDTO.getLastName());
+            professor.setEmail(personDTO.getEmail());
             professor.setCin(personDTO.getCin());
             professor.setSpeciality(personDTO.getSpeciality());
             professor.setDepartement(departementDao.findById(personDTO.getIdDepartement()).orElseThrow(() -> new IllegalArgumentException("Invalid departement ID")));
@@ -51,6 +52,7 @@ public class PersonServiceImpl implements IPersonService {
             administrator.setType(personDTO.getType()); // Set the type attribute
             administrator.setFirstName(personDTO.getFirstName());
             administrator.setLastName(personDTO.getLastName());
+            administrator.setEmail(personDTO.getEmail());
             administrator.setCin(personDTO.getCin());
             administrator.setGrade(personDTO.getGrade());
             // Set other administrator-specific fields here
