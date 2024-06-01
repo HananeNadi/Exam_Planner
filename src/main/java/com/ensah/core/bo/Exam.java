@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +19,7 @@ public class Exam {
     private Long idExam;
     private String startTime;
     private String endTime;
+
     private String duration;
     private String reelDuration;
     private String preuve;
@@ -24,13 +27,11 @@ public class Exam {
     private String Rapport;
 
 
-    //monitoring-exam
     @JsonIgnore
     @OneToMany(mappedBy = "exam")
     private Set<Monitoring> monitorins;
 
 
-    //element - exam
     @ManyToOne
     @JoinColumn(name = "id_element")
     private Educationalelement element;

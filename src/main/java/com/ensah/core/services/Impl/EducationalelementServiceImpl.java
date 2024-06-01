@@ -82,8 +82,6 @@ public class EducationalelementServiceImpl implements IEducationalelementService
             educationalelement.setCoordinator(pelement.getCoordinator());
         }
 
-        // Update any other fields as needed
-
         elementDao.save(educationalelement);
     }
 

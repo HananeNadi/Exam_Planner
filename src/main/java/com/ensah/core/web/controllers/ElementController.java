@@ -22,7 +22,7 @@ public class ElementController {
     IEducationalelementService educationalelementService;
 
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Educationalelement> addEducationalelementRS(@RequestBody Educationalelement educationalelement) {
        educationalelementService.addElement(educationalelement);
         return ResponseEntity.noContent().build();

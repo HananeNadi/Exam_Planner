@@ -1,29 +1,29 @@
 ### Create Personnel A
 POST http://localhost:8080/api/personnel
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA5NDk0NCwiaWF0IjoxNzE3MDkxMzQ0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.o8jtrHCg3Ca625hUpjEBO3R6D5l1qysD8Pg7_it5gc30XBE4ridtzzN1GBWr9WmJn0VA1C4wnvchCt5zCOQr0b3zPk7RjWbQLTUQy34qozzzbsrKmEACXMt57cMnbla7Yauwu-muBVme7dV_iFyfyXAdwppb1Ml2xzwTgpAIVjVLBzTmMVAfq6FkOZa1iDgoxzd4DLRH9AYG_r-o8YZIv92QiDUcgM_zhWJwUk4JsTySeNJSVSBzD-wBHsNvwhSb6XYG7hijde-oO_JY5aM7M5JsBqFRrmlwQhPeEtjt1HRmlBC0p7hdZloMo5yd6VUnQDMFt7NBojmctQNun90-6w
-
 
 
 {
-  "firstName": "hind",
+  "firstName": "haanane",
   "lastName": "mt",
-  "cin": "XNZoes7sjv8",
+  "cin": "kjgjba",
+  "email": "pkkkkp@gmail.com",
   "type": "Administrator",
-  "grade": "secretaire"
+  "grade": "Gestion"
 }
+
 
 ### Create Personnel P
 POST http://localhost:8080/api/personnel
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA5NDk0NCwiaWF0IjoxNzE3MDkxMzQ0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.o8jtrHCg3Ca625hUpjEBO3R6D5l1qysD8Pg7_it5gc30XBE4ridtzzN1GBWr9WmJn0VA1C4wnvchCt5zCOQr0b3zPk7RjWbQLTUQy34qozzzbsrKmEACXMt57cMnbla7Yauwu-muBVme7dV_iFyfyXAdwppb1Ml2xzwTgpAIVjVLBzTmMVAfq6FkOZa1iDgoxzd4DLRH9AYG_r-o8YZIv92QiDUcgM_zhWJwUk4JsTySeNJSVSBzD-wBHsNvwhSb6XYG7hijde-oO_JY5aM7M5JsBqFRrmlwQhPeEtjt1HRmlBC0p7hdZloMo5yd6VUnQDMFt7NBojmctQNun90-6w
 
 {
-  "firstName": "hamza",
+  "firstName": "hanane",
   "lastName": "hn",
-  "cin": "XNZos7sjv8",
+  "cin": "XNZos7pjv8",
+  "email": "Nadi@gmail.com",
   "type": "Professor",
-  "speciality": "uml",
+  "speciality": "java",
   "idDepartement": 1,
   "idSector": 1
 }

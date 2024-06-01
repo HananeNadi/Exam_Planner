@@ -130,4 +130,8 @@ public class PersonServiceImpl implements IPersonService {
     public Person getPersonByCin(String cin) {
         return personDao.getPersonByCin(cin);
     }
+
+    public List<Person> findAllProfessors() {
+        return personDao.findAllByType("Professor");
+    }
 }

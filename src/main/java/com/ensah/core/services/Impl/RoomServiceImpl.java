@@ -71,11 +71,15 @@ public class RoomServiceImpl implements IRoomService {
         return roomDao.getRoomByNameRoom(NameRoom);
     }
 
-    public void assignMonitorsToRooms(Set<Room> rooms, int nbrMonitors) {
-        for (Room room : rooms) {
-
-            roomDao.save(room);
-        }
+    @Override
+    public void assignMonitorsToRooms(Set<Room> rooms, int defaultInvigilators) {
     }
+
+//    public void assignMonitorsToRooms(Set<Room> rooms, int nbrMonitors) {
+//        for (Room room : rooms) {
+//
+//            roomDao.save(room);
+//        }
+//    }
 
 }

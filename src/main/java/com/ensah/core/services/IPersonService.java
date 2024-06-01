@@ -23,4 +23,6 @@ public interface IPersonService {
 
     public Person getPersonByCin(String cin);
 
+    public List<Person> findAllProfessors();
+
 }

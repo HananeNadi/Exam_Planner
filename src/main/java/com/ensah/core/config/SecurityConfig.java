@@ -50,31 +50,31 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .authorizeRequests( auth -> auth
-                        .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer((oauth2) -> oauth2
-                        .jwt(Customizer.withDefaults())
-                )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .httpBasic(withDefaults())
-                .build();
-    }
-
-
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        return http
-//                .csrf(csrf -> csrf.disable()) // Disable CSRF protection
-//                .authorizeRequests(auth -> auth
-//                        .anyRequest().permitAll() // Allow all requests
+//                .csrf(csrf -> csrf.disable())
+//                .authorizeRequests( auth -> auth
+//                        .anyRequest().authenticated()
 //                )
+//                .oauth2ResourceServer((oauth2) -> oauth2
+//                        .jwt(Customizer.withDefaults())
+//                )
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .httpBasic(withDefaults())
 //                .build();
 //    }
+
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable()) // Disable CSRF protection
+                .authorizeRequests(auth -> auth
+                        .anyRequest().permitAll() // Allow all requests
+                )
+                .build();
+    }
 
     @Bean
     JwtDecoder jwtDecoder() {

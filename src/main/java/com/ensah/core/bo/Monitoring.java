@@ -1,7 +1,6 @@
 package com.ensah.core.bo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +22,6 @@ public class Monitoring {
     @JoinTable(name = "Monitors_Profs",
             joinColumns = @JoinColumn(name = "id_Monitoring"),
             inverseJoinColumns = @JoinColumn(name = "id_Professor"))
-    @JsonIgnore
     private Set<Professor> professors=new HashSet<>();
 
     @ManyToOne

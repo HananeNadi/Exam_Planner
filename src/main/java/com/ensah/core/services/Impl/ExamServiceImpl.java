@@ -36,8 +36,6 @@ public class ExamServiceImpl implements IExamService {
         if (exam.getSession() == null) {
             exam.setSession(Session.NORMAL);
         }
-
-        // Set default type if not provided
         if (exam.getExamType() == null) {
             LocalDate currentDate = LocalDate.now();
             int month = currentDate.getMonthValue();

@@ -1,6 +1,9 @@
 package com.ensah.core.bo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -32,7 +35,6 @@ public class Group {
     @JoinTable(name = "Groups_Profs",
             joinColumns = @JoinColumn(name = "id_Group"),
             inverseJoinColumns = @JoinColumn(name = "id_Professor"))
-    @JsonIgnore
     private Set<Professor> professors=new HashSet<>();
 
 }

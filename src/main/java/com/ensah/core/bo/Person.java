@@ -29,9 +29,9 @@ public class Person {
     @NotBlank
     private String type;
 
-    @NotBlank @Column(nullable = false, unique = true)
+//    @NotBlank @Column(nullable = false, unique = true)
     private String cin;
-    @NotBlank @Column(nullable = false, unique = true)
+//    @NotBlank @Column(nullable = false, unique = true)
     private String email;
 
     @Override
