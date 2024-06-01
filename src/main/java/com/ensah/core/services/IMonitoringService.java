@@ -14,7 +14,7 @@ public interface IMonitoringService {
     public void deleteMonitoring(Long id);
     public Monitoring getMonitoringById(Long id);
 
-    List<Monitoring> getMonitoringByDate(LocalDateTime dateExam);
+    List<Monitoring> getMonitoringByDate(String dateExam);
 
 //    public void addProfessorsToMonitoring(Long monitoringId, int numberOfProfessors);
 

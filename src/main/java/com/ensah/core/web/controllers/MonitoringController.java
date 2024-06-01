@@ -55,7 +55,7 @@ public class MonitoringController {
 
 
     @GetMapping("/date/{dateExam}")
-    public ResponseEntity<List<Monitoring>> getMonitoringByDate(@PathVariable LocalDateTime dateExam) {
+    public ResponseEntity<List<Monitoring>> getMonitoringByDate(@PathVariable String dateExam) {
 //        LocalDateTime parsedDateTime = LocalDateTime.parse(dateExam, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 //        System.out.println("date exam is " + parsedDateTime);
         return ResponseEntity.ok(monitoringService.getMonitoringByDate(dateExam));

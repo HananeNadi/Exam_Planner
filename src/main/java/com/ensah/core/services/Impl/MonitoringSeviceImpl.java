@@ -118,7 +118,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
     }
 
     @Override
-    public List<Monitoring> getMonitoringByDate(LocalDateTime dateExam) {
+    public List<Monitoring> getMonitoringByDate(String dateExam) {
         return monitoringDao.findByDateExam(dateExam);
     }
 

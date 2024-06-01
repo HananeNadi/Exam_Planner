@@ -13,8 +13,8 @@ import java.util.List;
 public interface IMonitoringDao extends JpaRepository<Monitoring, Long> {
 
 
-    @Query("SELECT m FROM Monitoring m WHERE m.exam.startTime = :dateExam")
-    List<Monitoring> findByDateExam(@Param("dateExam") LocalDateTime dateExam);
+    @Query("SELECT m FROM Monitoring m WHERE m.dateExam = :dateExam")
+    List<Monitoring> findByDateExam(@Param("dateExam") String dateExam);
 
 
     @Query("SELECT a FROM Administrator a WHERE a.idPerson NOT IN " +

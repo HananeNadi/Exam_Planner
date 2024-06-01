@@ -1,79 +1,30 @@
-
 ### Create Monitoring
 POST http://localhost:8080/api/monitorings
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA5OTY1NiwiaWF0IjoxNzE3MDk2MDU2LCJzY29wZSI6IlJPTEVfVVNFUiJ9.bhnsLe8xs_Q71rrmMez3P3GDL8TiQo95TKn2V2N0cBbi41g_zjOjelVQIHqdluirXVsT650QJPD5fSGDJtjETt0wjaPGjlkt_uA0tTBhKUw9s_WACFBS1nwIZAQZDJ_9XfHesJW7gijqWJ7kjCBDUb5eBkZ9ty4Axdf5yTja9aQWKDaWZminIwpuAODDHgj4-bCEGAYDPaj86i6ZegSDtTMR37sSdATe55F-HEmlCUvDbsXxOl49JQ5TNRqS09hTmBthy96Q_AHd6mcyOf8jqw7tNxhFsNw_y6ZZg3yE9Pk9oFHDzBeSYbDBL7_rPpprwEQH9X5KJipD8ETq_1ZEsA
 
 
 {
-  "dateExam": "03-05-2024",
+  "dateExam": "01-06-2024",
   "room": {
-    "idRoom": 1
+    "idRoom": 2
   },
   "exam": {
-    "idExam": 1
+    "idExam": 3
   }
 }
 
-//
-//  "administrator": {
-//    "idPerson": 4
-//  },
-//#{{
-//#  "dateExam": "03-05-2024",
-//#  "administrator": {
-//#    "idPerson": 2
-//#  },
-//#  "room": {
-//#    "idRoom": 1
-//#  },}
-//#  "exam": {
-//#    "startTime": "10",
-//#    "endTime": "12",
-//#    "preuve": "Path//",
-//#    "element": {
-//#      "idElement": 1
-//#    }
-//#  }
-//#}
-
-### Update Educationalelement
-PUT http://localhost:8080/api/monitorings/1
-Content-Type: application/json
-
-{
-  "title": "Updated Element Title",
-  "level": {
-    "idLevel": 2,
-    "title": "Preparatory cycle 2"
-  },
-  "coordinator": {
-    "idPerson": 2
-  },
-  "elementType": "ELEMENT"
-}
-
-
-### Delete Monitoring
-DELETE http://localhost:8080/api/monitorings/1
-Content-Type: application/json
-
-
-### Get Monitoring
-GET http://localhost:8080/api/monitorings/1
-Accept: application/json
-
-### Get All Monitoring
-GET http://localhost:8080/api/monitorings
-Accept: application/json
 
 ### get Monitoring by date
-GET http://localhost:8080/api/monitorings/date/03-05-2024T08:00:00
+GET http://localhost:8080/api/monitorings/30-05-2024
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA5NDk0NCwiaWF0IjoxNzE3MDkxMzQ0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.o8jtrHCg3Ca625hUpjEBO3R6D5l1qysD8Pg7_it5gc30XBE4ridtzzN1GBWr9WmJn0VA1C4wnvchCt5zCOQr0b3zPk7RjWbQLTUQy34qozzzbsrKmEACXMt57cMnbla7Yauwu-muBVme7dV_iFyfyXAdwppb1Ml2xzwTgpAIVjVLBzTmMVAfq6FkOZa1iDgoxzd4DLRH9AYG_r-o8YZIv92QiDUcgM_zhWJwUk4JsTySeNJSVSBzD-wBHsNvwhSb6XYG7hijde-oO_JY5aM7M5JsBqFRrmlwQhPeEtjt1HRmlBC0p7hdZloMo5yd6VUnQDMFt7NBojmctQNun90-6w
+
 
 ### add professors to monitoring
 PUT http://localhost:8080/api/monitorings/1/addProfessorsToMonitoring
 Content-Type: application/json
 
-1
+[2]
 
 

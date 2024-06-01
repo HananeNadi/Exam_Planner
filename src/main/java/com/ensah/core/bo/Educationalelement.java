@@ -40,6 +40,7 @@ public class Educationalelement {
 
 
     // Element - Exam
-    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Exam> exams;
 }

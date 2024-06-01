@@ -21,9 +21,17 @@ VALUES ('Preparatory cycle 1'),
        ('Civil 3');
 
 INSERT INTO room (name_room,type,place,size)
-VALUES ('Amphi A','Amphi','Amphi',300),
-       ('room 1','Classrom','new Block',50),
-       ('TP 1', 'TP', 'new Block', 25);
+VALUES ('Amphi A','Amphie','Amphie',200),
+       ('room 1','Room','Block A',50),
+       ('TP 1', 'Tp', 'Block B', 25);
+
+-- INSERT INTO person (id_person, cin, email, first_name, last_name, type)
+-- VALUES (1, 'A111111', 'tarik@gmail.com', 'Tarik', 'BOUDAA', 'Professor'),
+--        (2, 'A111112', 'hamza@gmail.com', 'Hamza', 'MOTASSIM', 'Professor'),
+--        (3, 'A111122', 'mail@gmail.com', 'hhh', 'mm', 'Administrator');
+
+-- INSERT INTO educationalelement (`id_element`, `id_level`, `idcoordinator`, `idprofessor`, `title`, `element_type`) VALUES
+--     (1, 1, 1, 1, 'Java', 'ELEMENT');
 
 
 
