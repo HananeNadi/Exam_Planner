@@ -2,7 +2,6 @@ package com.ensah.core.services;
 
 import com.ensah.core.bo.Person;
 import com.ensah.core.dto.PersonDTO;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 

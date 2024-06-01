@@ -72,11 +72,4 @@ public class ExamServiceImpl implements IExamService {
     }
 
 
-    //TO _ DO
-//    public void assignRoomsToExam(Long examId, List<RoomAssignment> roomAssignments) {
-//        Exam exam = examDao.findById(examId).orElseThrow(() -> new ResourceNotFoundException("Exam not found"));
-//
-//    }
-
-
 }

@@ -5,10 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 
 @Repository
@@ -17,23 +15,6 @@ public interface IMonitoringDao extends JpaRepository<Monitoring, Long> {
 
     @Query("SELECT m FROM Monitoring m WHERE m.exam.startTime = :dateExam")
     List<Monitoring> findByDateExam(@Param("dateExam") LocalDateTime dateExam);
-
-//     available administrator for the control
-//    @Query("SELECT admin FROM Administrator admin " +
-//            "WHERE admin NOT IN " +
-//            "(SELECT m.administrator FROM Monitoring m WHERE " +
-//            "m.dateExam = :dateExam AND m.exam.startTime = :startTime)")
-//    List<Administrator> findAvailableAdministrators(@Param("dateExam") String dateExam, @Param("startTime") String startTime);
-
-
-    // available professors for the monitoring
-//    @Query("SELECT prof FROM Professor prof " +
-//            "WHERE prof NOT IN " +
-//            "(SELECT m.professors FROM Monitoring m WHERE " +
-//            "m.dateExam = :dateExam AND m.exam.startTime = :startTime)")
-//    List<Professor> findAvailableProfessors(@Param("dateExam") String dateExam, @Param("startTime") String startTime);
-//
-//    int countByProfessorsAndDateExam(Professor professor, String dateExam);
 
 
     @Query("SELECT a FROM Administrator a WHERE a.idPerson NOT IN " +
