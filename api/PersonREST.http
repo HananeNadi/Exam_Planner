@@ -6,8 +6,8 @@ Content-Type: application/json
 {
   "firstName": "haanane",
   "lastName": "mt",
-  "cin": "kjgjba",
-  "email": "pkkkkp@gmail.com",
+  "cin": "hhhhhh",
+  "email": "hhhhh@gmail.com",
   "type": "Administrator",
   "grade": "Gestion"
 }
@@ -20,8 +20,8 @@ Content-Type: application/json
 {
   "firstName": "hanane",
   "lastName": "hn",
-  "cin": "XNZos7pjv8",
-  "email": "Nadi@gmail.com",
+  "cin": "XNZss7pjv8",
+  "email": "hanane@gmail.com",
   "type": "Professor",
   "speciality": "java",
   "idDepartement": 1,
@@ -41,7 +41,7 @@ DELETE http://localhost:8080/api/personnel/1
 Content-Type: application/json
 
 ### Get Personnel
-GET http://localhost:8080/api/personnel/1
+GET http://localhost:8080/api/personnel/3
 Accept: application/json
 
 ### Get All Personnel

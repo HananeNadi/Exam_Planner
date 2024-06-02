@@ -2,11 +2,10 @@ package com.ensah.core.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 
@@ -17,7 +16,13 @@ public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idExam;
+
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String startTime;
+
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String endTime;
 
     private String duration;
@@ -32,6 +37,8 @@ public class Exam {
     private Set<Monitoring> monitorins;
 
 
+
+//    @JsonIgnore (mni anbghiw ncrew monitoring and get the element id this will null -->error)
     @ManyToOne
     @JoinColumn(name = "id_element")
     private Educationalelement element;

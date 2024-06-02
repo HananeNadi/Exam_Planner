@@ -3,6 +3,8 @@ package com.ensah.core.bo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,6 +18,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class Professor extends Person {
 
+
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String speciality;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -23,7 +23,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGroup;
 
-    @Size(min = 5, max = 20, message= "Title must be between 5 and 20 characters")
+    @Size(min = 5, message= "Title must be between 5 and 20 characters")
     private String title;
 
 

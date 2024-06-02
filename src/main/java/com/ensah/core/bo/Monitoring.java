@@ -2,6 +2,8 @@ package com.ensah.core.bo;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.HashSet;
@@ -15,6 +17,9 @@ public class Monitoring {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMonitor;
+
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String dateExam;
 
 

@@ -9,9 +9,13 @@ import com.ensah.core.services.IExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -70,6 +74,39 @@ public class ExamServiceImpl implements IExamService {
     public Exam getExamById(Long id) {
         return examDao.findById(id).get();
     }
+    @Override
+    public Exam addReport(Long examId, String report, MultipartFile pvFile, MultipartFile preuve) throws IOException {
+        Optional<Exam> optionalExam = examDao.findById(examId);
+        if (!optionalExam.isPresent()) {
+            throw new RuntimeException("Exam not found with ID: " + examId);
+        }
 
+        Exam exam = optionalExam.get();
+        exam.setRapport(report);
 
+        if (pvFile != null && !pvFile.isEmpty()) {
+            String pvFilePath = saveFile(pvFile);
+            exam.setPv(pvFilePath);
+        }
+
+        if (preuve != null && !preuve.isEmpty()) {
+            String examPreuve = saveFile(preuve);
+            exam.setPreuve(examPreuve);
+        }
+
+        return examDao.save(exam);
+    }
+
+    private String saveFile(MultipartFile file) throws IOException {
+        String fileName = file.getOriginalFilename();
+        String filePath = "/rapport/" + fileName; // Adjust path based on your property
+
+        File dest = new File(filePath);
+        file.transferTo(dest);
+
+        return filePath;
+    }
 }
+
+
+

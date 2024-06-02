@@ -2,6 +2,8 @@ package com.ensah.core.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +18,13 @@ public class Educationalelement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idElement;
 
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String title;
 
     // Element - Level
+
+
     @ManyToOne
     @JoinColumn(name = "id_level")
     private Level level;
@@ -29,18 +35,21 @@ public class Educationalelement {
     private ElementType elementType;
 
     // Element - Professor
+
     @ManyToOne
     @JoinColumn(name = "idprofessor")
     private Professor professor;
 
     // Surveillance - Coordinator
+
     @ManyToOne
     @JoinColumn(name = "idcoordinator")
     private Professor coordinator;
 
 
     // Element - Exam
-    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
+
     @JsonIgnore
+    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
     private Set<Exam> exams;
 }

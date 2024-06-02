@@ -3,10 +3,19 @@ POST http://localhost:8080/api/Exam
 Content-Type: application/json
 
 {
-  "startTime": "10",
-  "endTime":  "12",
-  "preuve": "Path//",
+  "startTime": "16",
+  "endTime":  "18",
   "element": {
     "idElement": 1
   }
 }
+### Add Report
+POST http://localhost:8080/api/Exam/report/1
+Content-Type: application/json
+
+
+
+### Delete exam
+DELETE http://localhost:8080/api/Exam/1
+Content-Type: application/json
+

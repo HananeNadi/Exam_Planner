@@ -29,6 +29,7 @@ Content-Type: application/json
     "idLevel": 2,
     "title": "Preparatory cycle 2"
   },
+
   "coordinator": {
     "idPerson": 2
   },

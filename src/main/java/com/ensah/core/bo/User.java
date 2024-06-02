@@ -1,6 +1,9 @@
 package com.ensah.core.bo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +23,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank @Column(nullable = false, unique = true)
     private String username;
+
+    @NotNull
+    @NotBlank(message = "This field should not be empty !")
     private String password;
     private String roles;
 
