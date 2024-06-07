@@ -1,9 +1,8 @@
 package com.ensah.core.services.Impl;
 
-import com.ensah.core.bo.Administrator;
-import com.ensah.core.bo.Person;
-import com.ensah.core.bo.Professor;
+import com.ensah.core.bo.*;
 import com.ensah.core.dao.IDepartementDao;
+import com.ensah.core.dao.IEducationalelementDao;
 import com.ensah.core.dao.IPersonDao;
 import com.ensah.core.dao.ISectorDao;
 import com.ensah.core.dto.PersonDTO;
@@ -25,6 +24,8 @@ public class PersonServiceImpl implements IPersonService {
     @Autowired
     IPersonDao personDao;
     @Autowired
+    IEducationalelementDao educationalelementDao;
+    @Autowired
     IDepartementDao departementDao;
     @Autowired
     ISectorDao sectorDao;
@@ -32,7 +33,13 @@ public class PersonServiceImpl implements IPersonService {
 
 
     public void addPerson(PersonDTO personDTO) {
-        System.out.println("Received type: " + personDTO.getType());
+        if (personDao.existsByCin(personDTO.getCin())) {
+            throw new RuntimeException("Person with this Cin already exists");
+        }
+        if (personDao.existsByEmail(personDTO.getEmail())) {
+            throw new RuntimeException("Person with this email already exists");
+        }
+
         Person person;
         if ("Professor".equals(personDTO.getType())){
             Professor professor = new Professor();
@@ -45,7 +52,6 @@ public class PersonServiceImpl implements IPersonService {
             professor.setDepartement(departementDao.findById(personDTO.getIdDepartement()).orElseThrow(() -> new IllegalArgumentException("Invalid departement ID")));
             professor.setSector(sectorDao.findById(personDTO.getIdSector()).orElseThrow(() -> new IllegalArgumentException("Invalid Sector ID")));
 
-            // Set other professor-specific fields here
             person = professor;
         } else if ("Administrator".equals(personDTO.getType())) {
             Administrator administrator = new Administrator();
@@ -55,7 +61,6 @@ public class PersonServiceImpl implements IPersonService {
             administrator.setEmail(personDTO.getEmail());
             administrator.setCin(personDTO.getCin());
             administrator.setGrade(personDTO.getGrade());
-            // Set other administrator-specific fields here
             person = administrator;
         } else {
             throw new IllegalArgumentException("Invalid person data");
@@ -85,17 +90,14 @@ public class PersonServiceImpl implements IPersonService {
             person.setCin(personDTO.getCin());
         }
 
-        // Update specific fields based on the type of person
         if (person instanceof Professor) {
             if (personDTO.getSpeciality() != null) {
                 ((Professor) person).setSpeciality(personDTO.getSpeciality());
             }
-            // Update other professor-specific fields if necessary
         } else if (person instanceof Administrator) {
             if (personDTO.getGrade() != null) {
                 ((Administrator) person).setGrade(personDTO.getGrade());
             }
-            // Update other administrator-specific fields if necessary
         } else {
             throw new IllegalArgumentException("Invalid person type");
         }
@@ -108,13 +110,21 @@ public class PersonServiceImpl implements IPersonService {
         return personDao.findAll();
 
     }
-
+    @Transactional
     public void deletePerson(Long id) {
-        if (getPersonById(id) != null){
+        Person personToDelete = personDao.findById(id).get();
+
+        if ("Professor".equals(personToDelete.getType())) {
+            Professor professor = (Professor) personToDelete;
+            for (Group group : professor.getGroups()) {
+                group.getProfessors().remove(professor);
+            }
+
             personDao.deleteById(id);
         }
-
     }
+
+
 
     public Person getPersonById(Long id) {
         Optional<Person> personOptional = personDao.findById(id);
@@ -122,7 +132,7 @@ public class PersonServiceImpl implements IPersonService {
             return personOptional.get();
         } else {
             System.out.println("Person with id " + id + " doesn't exist");
-            return null; // or throw an exception
+            return null;
         }
     }
 

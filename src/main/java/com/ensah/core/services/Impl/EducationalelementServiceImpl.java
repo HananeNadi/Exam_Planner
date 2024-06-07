@@ -1,7 +1,5 @@
 package com.ensah.core.services.Impl;
-
 import com.ensah.core.bo.Educationalelement;
-import com.ensah.core.bo.Group;
 import com.ensah.core.bo.Person;
 import com.ensah.core.bo.Professor;
 import com.ensah.core.dao.IEducationalelementDao;
@@ -11,7 +9,6 @@ import com.ensah.core.web.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +23,6 @@ public class EducationalelementServiceImpl implements IEducationalelementService
     IPersonDao personDao;
 
     public void addElement(Educationalelement element) {
-        // Set professor using the provided ID
         if (element.getProfessor() != null && element.getProfessor().getIdPerson() != null) {
             Person professor = personDao.findById(element.getProfessor().getIdPerson())
                     .orElseThrow(() -> new ResourceNotFoundException("Professor", "id", element.getProfessor().getIdPerson()));
@@ -77,11 +73,9 @@ public class EducationalelementServiceImpl implements IEducationalelementService
         if (pelement.getProfessor() != null) {
             educationalelement.setProfessor(pelement.getProfessor());
         }
-
         if (pelement.getCoordinator() != null) {
             educationalelement.setCoordinator(pelement.getCoordinator());
         }
-
         elementDao.save(educationalelement);
     }
 

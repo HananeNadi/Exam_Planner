@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public interface IPersonDao extends JpaRepository<Person, Long> {
 
+    boolean existsByEmail(String email);
+    boolean existsByCin(String cin);
 
     List<Person> findAllByType(String type);
 

@@ -46,6 +46,6 @@ public class Professor extends Person {
     private Set<Monitoring> monitorins;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private Set<Educationalelement> elements;
 }

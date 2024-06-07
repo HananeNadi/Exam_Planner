@@ -4,8 +4,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTcxNzA3OTE0NCwiaWF0IjoxNzE3MDc1NTQ0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.WKwxbwOptQztDvWEriYFDLshz8sWt_1jVl0-ZYiWQRrLCN60C1h8Ow3OzP_GzXg_yCPpcqu85wB5Ht01aloZnmTlYDazkr-cc9hDaUodavkMmawkuwvhlz24hmFoFcDt0cGIZUyVNyNJKzY3qx5yx79Cvzwe3DulUny-IP8lzagJCtFDZj3KWd0-vLR6_Vam9baxM3Yi4hnbdf1ZLBRwmrD1NSiDPFsCbvZun9lDtDyfCeu6_xWPRNpxTbQLCBo5fZr1sJMtfHphyTYY7QOsatJ4GPTKzcAUhM_WcJVqUTGlmUyNJN6nUsFSe6UlIOaBBRS8DfprHul7Rp_WorhfGw
 
 {
-  "title": "funnn",
-  "description": "A group for fun  "
+  "title": "Departement",
+  "description": "A group for Departement  "
 
 }
 ### Update Group
@@ -29,10 +29,9 @@ GET http://localhost:8080/api/Group
 Accept: application/json
 
 ### Create groups of professors
-PUT http://localhost:8080/api/Group/2/addProfessortogroup
+PUT http://localhost:8080/api/Group/1/addProfessortogroup
 Content-Type: application/json
 
-[1,2]
+[1]
 
 
-###

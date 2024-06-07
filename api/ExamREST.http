@@ -3,19 +3,51 @@ POST http://localhost:8080/api/Exam
 Content-Type: application/json
 
 {
-  "startTime": "16",
-  "endTime":  "18",
+  "startTime": "8",
+  "endTime":  "10",
   "element": {
-    "idElement": 1
+    "idElement": 2
   }
 }
+
+### Update Exam
+PUT http://localhost:8080/api/Exam/1
+Content-Type: application/json
+
+{
+  "startTime": "8",
+  "endTime": "10"
+}
+
+
+###  After Exam
+PUT http://localhost:8080/api/Exam/1
+Content-Type: application/json
+
+{
+  "preuve": "PreuvePath",
+  "pv": "PvPath",
+  "Rapport": "RapportPath"
+
+}
+
+
+
+### Get Exam
+GET http://localhost:8080/api/Exam/1
+Accept: application/json
+
+### Get All Exam
+GET http://localhost:8080/api/Exam
+Accept: application/json
+
+
 ### Add Report
 POST http://localhost:8080/api/Exam/report/1
 Content-Type: application/json
 
 
-
 ### Delete exam
-DELETE http://localhost:8080/api/Exam/1
+DELETE http://localhost:8080/api/Exam/2
 Content-Type: application/json
 

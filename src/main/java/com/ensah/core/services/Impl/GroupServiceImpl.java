@@ -52,11 +52,13 @@ public class GroupServiceImpl implements IGroupService {
 
     }
 
-    public void deleteGroup(Long id) {
-        if (getGroupById(id) != null) {
-            groupDao.deleteById(id);
-        }
 
+
+    @Transactional
+    public void deleteGroup(Long id) {
+        Group grp=groupDao.findById(id).get();
+        grp.getProfessors().removeAll(grp.getProfessors());
+        groupDao.deleteById(id);
     }
 
     public Group getGroupById(Long id) {

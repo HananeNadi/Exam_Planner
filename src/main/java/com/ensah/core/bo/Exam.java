@@ -2,8 +2,6 @@ package com.ensah.core.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Set;
@@ -17,14 +15,11 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idExam;
 
-    @NotNull
-    @NotBlank(message = "This field should not be empty !")
+
     private String startTime;
 
-    @NotNull
-    @NotBlank(message = "This field should not be empty !")
-    private String endTime;
 
+    private String endTime;
     private String duration;
     private String reelDuration;
     private String preuve;
@@ -33,7 +28,7 @@ public class Exam {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "exam")
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Monitoring> monitorins;
 
 

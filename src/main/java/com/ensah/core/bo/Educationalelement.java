@@ -35,20 +35,16 @@ public class Educationalelement {
     private ElementType elementType;
 
     // Element - Professor
-
     @ManyToOne
     @JoinColumn(name = "idprofessor")
     private Professor professor;
 
     // Surveillance - Coordinator
-
     @ManyToOne
     @JoinColumn(name = "idcoordinator")
     private Professor coordinator;
 
-
     // Element - Exam
-
     @JsonIgnore
     @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
     private Set<Exam> exams;

@@ -23,7 +23,7 @@ public class Monitoring {
     private String dateExam;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "Monitors_Profs",
             joinColumns = @JoinColumn(name = "id_Monitoring"),
             inverseJoinColumns = @JoinColumn(name = "id_Professor"))

@@ -4,24 +4,24 @@ Content-Type: application/json
 
 
 {
-  "firstName": "haanane",
-  "lastName": "mt",
-  "cin": "hhhhhh",
-  "email": "hhhhh@gmail.com",
+  "firstName": "hind",
+  "lastName": "hhh",
+  "cin": "T131424386",
+  "email": "hind-hayat@gmail.com",
   "type": "Administrator",
-  "grade": "Gestion"
+  "grade": "secretaire"
 }
 
 
-### Create Personnel P
+### Create Personnel (Professor)
 POST http://localhost:8080/api/personnel
 Content-Type: application/json
 
 {
   "firstName": "hanane",
   "lastName": "hn",
-  "cin": "XNZss7pjv8",
-  "email": "hanane@gmail.com",
+  "cin": "R131525586",
+  "email": "hagane_nadi@gmail.com",
   "type": "Professor",
   "speciality": "java",
   "idDepartement": 1,
@@ -33,7 +33,7 @@ PUT http://localhost:8080/api/personnel/1
 Content-Type: application/json
 
 {
-  "firstName": "hanane"
+  "firstName": "Abdo"
 }
 
 ### Delete Personnel
@@ -41,7 +41,7 @@ DELETE http://localhost:8080/api/personnel/1
 Content-Type: application/json
 
 ### Get Personnel
-GET http://localhost:8080/api/personnel/3
+GET http://localhost:8080/api/personnel/2
 Accept: application/json
 
 ### Get All Personnel

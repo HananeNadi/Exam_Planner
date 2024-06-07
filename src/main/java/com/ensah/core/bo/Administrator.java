@@ -24,7 +24,7 @@ public class Administrator extends Person{
     private String grade;
 
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "administrator",fetch = FetchType.LAZY)
     private Set<Monitoring> monitorins;
 

@@ -1,25 +1,19 @@
 package com.ensah.core.web.controllers;
-
-
 import com.ensah.core.bo.Person;
 import com.ensah.core.bo.User;
 import com.ensah.core.dao.IUserDao;
 import com.ensah.core.dto.PersonDTO;
 import com.ensah.core.services.IPersonService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import java.security.SecureRandom;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/personnel")
@@ -34,51 +28,70 @@ public class PersonController {
     PasswordEncoder encoder;
     private final SecureRandom secureRandom = new SecureRandom();
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @PostMapping()
-    public ResponseEntity<Void> addPerson(@RequestBody PersonDTO personDTO) {
-        personService.addPerson(personDTO);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> addPerson(@RequestBody PersonDTO personDTO) {
+        logger.info("Adding person with details: {}", personDTO);
+        try {
+            personService.addPerson(personDTO);
+            logger.info("Person was added successfully.");
+            return ResponseEntity.ok("Person was added successfully.");
+        } catch (RuntimeException e) {
+            logger.error("Failed to add person: {}", e.getMessage(), e);
+            return ResponseEntity.badRequest().body("Failed to add person: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{personnelId}")
-    public ResponseEntity<Void> updatePerson(@PathVariable Long personnelId, @RequestBody PersonDTO personDTO) {
+    public ResponseEntity<String> updatePerson(@PathVariable Long personnelId, @RequestBody PersonDTO personDTO) {
+        logger.info("Updating person with ID: {} and details: {}", personnelId, personDTO);
         personService.updatePerson(personnelId, personDTO);
-        return ResponseEntity.ok().build();
-
+        logger.info("Person was updated successfully.");
+        return ResponseEntity.ok("Person was updated successfully.");
     }
+
     @GetMapping
-    public ResponseEntity<List<Person>> getAllPersonRS() {
-        List<Person> Persons = personService.getAllPersons();
-
-        if (Persons.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> getAllPersonRS() {
+        logger.info("Fetching all persons.");
+        List<Person> persons = personService.getAllPersons();
+        if (persons.isEmpty()) {
+            logger.info("No persons found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No persons found.");
         }
-        return new ResponseEntity<>(Persons, HttpStatus.OK);
+        logger.info("Fetched {} persons.", persons.size());
+        return ResponseEntity.ok(persons);
     }
-
 
     @GetMapping("/{personnelId}")
-    public ResponseEntity<Person> getOnePersonRS(@PathVariable Long personnelId) {
-        Person Person = personService.getPersonById(personnelId);
-
-        if (Person== null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> getOnePersonRS(@PathVariable Long personnelId) {
+        logger.info("Fetching person with ID: {}", personnelId);
+        Person person = personService.getPersonById(personnelId);
+        if (person == null) {
+            logger.info("Person with ID {} not found.", personnelId);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Person with ID " + personnelId + " not found");
         }
-        return new ResponseEntity(Person, HttpStatus.OK);
+        logger.info("Fetched person: {}", person);
+        return ResponseEntity.ok(person);
     }
 
     @DeleteMapping("/{personnelId}")
-    public ResponseEntity<Void> deletePersonRS(@PathVariable Long personnelId) {
+    public ResponseEntity<String> deletePersonRS(@PathVariable Long personnelId) {
+        logger.info("Deleting person with ID: {}", personnelId);
         personService.deletePerson(personnelId);
-        return ResponseEntity.noContent().build();
+        logger.info("Person with ID {} has been deleted.", personnelId);
+        return ResponseEntity.ok("Person with ID " + personnelId + " has been deleted.");
     }
 
     @PostMapping("/user/{personnelId}")
     public ResponseEntity<String> setPersonnelUser(@PathVariable Long personnelId) {
+        logger.info("Setting user for personnel with ID: {}", personnelId);
         Person p = personService.getPersonById(personnelId);
         String password = generateRandomPassword(10);
         User u = new User(p.getEmail(), encoder.encode(password), "ROLE_USER");
         userDao.save(u);
+        logger.info("User created for personnel ID {}. Generated password: {}", personnelId, password);
         return ResponseEntity.ok(password);
     }
 
@@ -90,23 +103,4 @@ public class PersonController {
         }
         return password.toString();
     }
-
-    //validation handler
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handValidEx(MethodArgumentNotValidException ex) {
-
-        Map<String, String> errors = new HashMap<>();
-        List<ObjectError> validationErros = ex.getBindingResult().getAllErrors();
-        for (ObjectError error : validationErros) {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        }
-
-        return ResponseEntity.badRequest().body(errors);
-    }
-
-
 }
-
-

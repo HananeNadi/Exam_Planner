@@ -1,8 +1,6 @@
-
 ### Create Monitoring
 POST http://localhost:8080/api/monitorings
 Content-Type: application/json
-
 
 {
   "dateExam": "03-05-2024",
@@ -10,25 +8,17 @@ Content-Type: application/json
     "idRoom": 1
   },
   "exam": {
-    "idExam": 3
+    "idExam": 2
   }
 }
 
 
-### Update Educationalelement
+### Update Monitoring
 PUT http://localhost:8080/api/monitorings/1
 Content-Type: application/json
 
 {
-  "title": "Updated Element Title",
-  "level": {
-    "idLevel": 2,
-    "title": "Preparatory cycle 2"
-  },
-  "coordinator": {
-    "idPerson": 2
-  },
-  "elementType": "ELEMENT"
+  "dateExam": "03-06-2024"
 }
 
 
@@ -46,13 +36,8 @@ GET http://localhost:8080/api/monitorings
 Accept: application/json
 
 ### get Monitoring by date
-GET http://localhost:8080/api/monitorings/date/03-05-2024
+GET http://localhost:8080/api/monitorings/date/03-06-2024
 Accept: application/json
 
-### add professors to monitoring
-PUT http://localhost:8080/api/monitorings/1/addProfessorsToMonitoring
-Content-Type: application/json
-
-1
 
 
