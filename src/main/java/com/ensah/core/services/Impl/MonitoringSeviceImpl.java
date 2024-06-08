@@ -22,7 +22,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
     @Autowired
     IExamDao examDao;
 
-    public void addMonitoring(Monitoring monitoring) {
+    public void addMonitoring(Monitoring monitoring,int nbrMonitors) {
         Exam exam = monitoring.getExam();
         if (exam == null) {
             throw new IllegalArgumentException("Exam cannot be null in the monitoring entity");
@@ -43,7 +43,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
         Administrator selectedAdministrator = findAvailableAdministrator(roomId, dateExam, startTime, 2);
         monitoring.setAdministrator(selectedAdministrator);
 
-        List<Professor> selectedProfessors = findAvailableProfessors(roomId, dateExam, startTime, 2, 2);
+        List<Professor> selectedProfessors = findAvailableProfessors(roomId, dateExam, startTime, 2,nbrMonitors);
         Set<Professor> professorSet = new HashSet<>(selectedProfessors);
         monitoring.setProfessors(professorSet);
 

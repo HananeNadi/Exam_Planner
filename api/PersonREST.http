@@ -1,3 +1,9 @@
+GET http://localhost:8080/api/personnel/exportPersons
+Accept: application/json
+
+
+
+
 ### Create Personnel A
 POST http://localhost:8080/api/personnel
 Content-Type: application/json
@@ -20,8 +26,8 @@ Content-Type: application/json
 {
   "firstName": "hanane",
   "lastName": "hn",
-  "cin": "R131525586",
-  "email": "hagane_nadi@gmail.com",
+  "cin": "R144545586",
+  "email": "hagtte_nadi@gmail.com",
   "type": "Professor",
   "speciality": "java",
   "idDepartement": 1,

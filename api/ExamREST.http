@@ -6,7 +6,7 @@ Content-Type: application/json
   "startTime": "8",
   "endTime":  "10",
   "element": {
-    "idElement": 2
+    "idElement": 1
   }
 }
 
@@ -40,7 +40,6 @@ Accept: application/json
 ### Get All Exam
 GET http://localhost:8080/api/Exam
 Accept: application/json
-
 
 ### Add Report
 POST http://localhost:8080/api/Exam/report/1

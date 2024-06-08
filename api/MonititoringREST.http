@@ -1,5 +1,5 @@
 ### Create Monitoring
-POST http://localhost:8080/api/monitorings
+POST http://localhost:8080/api/monitorings?nbrMonitors=2
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
     "idRoom": 1
   },
   "exam": {
-    "idExam": 2
+    "idExam": 1
   }
 }
 

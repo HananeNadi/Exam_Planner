@@ -151,8 +151,7 @@ public class ExamServiceImpl implements IExamService {
 
     private String saveFile(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-        String filePath = "/rapport/" + fileName; // Adjust path based on your property
-
+        String filePath = "/rapport/" + fileName;
         File dest = new File(filePath);
         file.transferTo(dest);
 

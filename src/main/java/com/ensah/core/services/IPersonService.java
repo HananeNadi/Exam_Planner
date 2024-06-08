@@ -2,6 +2,7 @@ package com.ensah.core.services;
 
 import com.ensah.core.bo.Person;
 import com.ensah.core.dto.PersonDTO;
+import com.ensah.core.utils.ExcelExporter;
 
 import java.util.List;
 
@@ -23,5 +24,7 @@ public interface IPersonService {
     public Person getPersonByCin(String cin);
 
     public List<Person> findAllProfessors();
+
+    public ExcelExporter preparePersonneExport(List<Person> persons);
 
 }

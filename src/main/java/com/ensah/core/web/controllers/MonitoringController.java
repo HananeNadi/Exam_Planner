@@ -25,11 +25,11 @@ public class MonitoringController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @PostMapping
-    public ResponseEntity<String> addMonitoringRS(@Valid @RequestBody Monitoring monitoring) {
+    public ResponseEntity<String> addMonitoringRS(@Valid @RequestBody Monitoring monitoring,@RequestParam int nbrMonitors) {
         try {
-            monitoringService.addMonitoring(monitoring);
+            monitoringService.addMonitoring(monitoring,nbrMonitors);
             logger.info("Monitoring added successfully.");
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Monitoring added successfully.");
         } catch (RuntimeException e) {
             logger.error("Failed to add monitoring: {}", e.getMessage(), e);
             return ResponseEntity.badRequest().body("Failed to add monitoring: " + e.getMessage());
@@ -41,7 +41,7 @@ public class MonitoringController {
         try {
             monitoringService.updateMonitoring(monitoringId, monitoringDetails);
             logger.info("Monitoring with ID {} updated successfully.", monitoringId);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Monitoring updated successfully.");
         } catch (RuntimeException e) {
             logger.error("Failed to update monitoring: {}", e.getMessage(), e);
             return ResponseEntity.badRequest().body("Failed to update monitoring: " + e.getMessage());
@@ -73,7 +73,7 @@ public class MonitoringController {
         try {
             monitoringService.deleteMonitoring(monitoringId);
             logger.info("Monitoring with ID {} deleted successfully.", monitoringId);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Monitoring deleted successfully.");
         } catch (RuntimeException e) {
             logger.error("Failed to delete monitoring: {}", e.getMessage(), e);
             return ResponseEntity.badRequest().body("Failed to delete monitoring: " + e.getMessage());

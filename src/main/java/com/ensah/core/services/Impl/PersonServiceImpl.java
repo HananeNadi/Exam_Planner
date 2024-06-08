@@ -6,6 +6,7 @@ import com.ensah.core.dao.IEducationalelementDao;
 import com.ensah.core.dao.IPersonDao;
 import com.ensah.core.dao.ISectorDao;
 import com.ensah.core.dto.PersonDTO;
+import com.ensah.core.utils.ExcelExporter;
 import com.ensah.core.web.exceptions.ResourceNotFoundException;
 import com.ensah.core.services.IPersonService;
 import lombok.RequiredArgsConstructor;
@@ -144,4 +145,20 @@ public class PersonServiceImpl implements IPersonService {
     public List<Person> findAllProfessors() {
         return personDao.findAllByType("Professor");
     }
+
+    public ExcelExporter preparePersonneExport(List<Person> persons) {
+        String[] columnNames = new String[] { "FirstName", "LastName", "CIN", "Email", "Type" };
+        String[][] data = new String[persons.size()][5];
+        int i = 0;
+        for (Person u : persons) {
+            data[i][0] = u.getFirstName();
+            data[i][1] = u.getLastName();
+            data[i][2] = u.getCin();
+            data[i][3] = u.getEmail();
+            data[i][4] = u.getType();
+            i++;
+        }
+        return new ExcelExporter(columnNames, data, "persons");
+    }    
+
 }

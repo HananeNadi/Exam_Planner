@@ -9,10 +9,10 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsI
     "idLevel": 2
   },
   "professor": {
-    "idPerson":2
+    "idPerson":1
   },
   "coordinator": {
-    "idPerson": 2
+    "idPerson": 1
   },
   "elementType": "MODULE"
 }
