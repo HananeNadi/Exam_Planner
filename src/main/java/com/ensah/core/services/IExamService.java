@@ -18,7 +18,7 @@ public interface IExamService {
     public void deleteExam(Long id);
 
     public Exam getExamById(Long id);
-    public Exam addDocumentsAfterEXam(Long examId, String report, MultipartFile pvFile, MultipartFile preuve) throws IOException;
+    public Exam addDocumentsAfterEXam(Long examId, String report, String pvFile, String preuve) throws IOException;
 
 
 

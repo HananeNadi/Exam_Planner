@@ -12,7 +12,7 @@ Content-Type: application/json
 {
   "firstName": "hind",
   "lastName": "hhh",
-  "cin": "T131424386",
+  "cin": "GH000909",
   "email": "hind-hayat@gmail.com",
   "type": "Administrator",
   "grade": "secretaire"
@@ -26,8 +26,8 @@ Content-Type: application/json
 {
   "firstName": "hanane",
   "lastName": "hn",
-  "cin": "R144545586",
-  "email": "hagtte_nadi@gmail.com",
+  "cin": "HJ997998",
+  "email": "hpgltiKnadi@gmail.com",
   "type": "Professor",
   "speciality": "java",
   "idDepartement": 1,

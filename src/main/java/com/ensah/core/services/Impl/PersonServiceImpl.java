@@ -111,7 +111,6 @@ public class PersonServiceImpl implements IPersonService {
         return personDao.findAll();
 
     }
-    @Transactional
     public void deletePerson(Long id) {
         Person personToDelete = personDao.findById(id).get();
 

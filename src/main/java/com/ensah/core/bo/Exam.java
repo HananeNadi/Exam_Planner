@@ -17,8 +17,6 @@ public class Exam {
 
 
     private String startTime;
-
-
     private String endTime;
     private String duration;
     private String reelDuration;

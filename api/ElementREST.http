@@ -6,7 +6,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsI
 {
   "title": "java",
   "level": {
-    "idLevel": 2
+    "idLevel": 1
   },
   "professor": {
     "idPerson":1

@@ -45,6 +45,9 @@ public class ExamServiceImpl implements IExamService {
             int month = currentDate.getMonthValue();
             exam.setExamType(month == 11  || month == 4 ? ExamType.DS : ExamType.EXAM);
         }
+        if (exam.getRapport() == null) {
+            exam.setRapport("Rien à signaler");
+        }
 
         return examDao.save(exam).getIdExam();
     }
@@ -127,7 +130,7 @@ public class ExamServiceImpl implements IExamService {
 
 
     @Override
-    public Exam addDocumentsAfterEXam(Long examId, String report, MultipartFile pvFile, MultipartFile preuve) throws IOException {
+    public Exam addDocumentsAfterEXam(Long examId, String report, String  pvFile, String preuve) throws IOException {
         Optional<Exam> optionalExam = examDao.findById(examId);
         if (!optionalExam.isPresent()) {
             throw new RuntimeException("Exam not found with ID: " + examId);
@@ -135,28 +138,37 @@ public class ExamServiceImpl implements IExamService {
 
         Exam exam = optionalExam.get();
         exam.setRapport(report);
+        exam.setPv(pvFile);
+        exam.setPreuve(preuve);
 
-        if (pvFile != null && !pvFile.isEmpty()) {
-            String pvFilePath = saveFile(pvFile);
-            exam.setPv(pvFilePath);
-        }
 
-        if (preuve != null && !preuve.isEmpty()) {
-            String examPreuve = saveFile(preuve);
-            exam.setPreuve(examPreuve);
-        }
+
+//        if (report != null && !report.isEmpty()) {
+//            String reportPath = saveFile(report);
+//            exam.setRapport(reportPath);
+//        }
+//
+//        if (pvFile != null && !pvFile.isEmpty()) {
+//            String pvFilePath = saveFile(pvFile);
+//            exam.setPv(pvFilePath);
+//        }
+//
+//        if (preuve != null && !preuve.isEmpty()) {
+//            String examPreuve = saveFile(preuve);
+//            exam.setPreuve(examPreuve);
+//        }
 
         return examDao.save(exam);
     }
 
-    private String saveFile(MultipartFile file) throws IOException {
-        String fileName = file.getOriginalFilename();
-        String filePath = "/rapport/" + fileName;
-        File dest = new File(filePath);
-        file.transferTo(dest);
-
-        return filePath;
-    }
+//    private String saveFile(MultipartFile file) throws IOException {
+//        String fileName = file.getOriginalFilename();
+//        String filePath = "/rapport/" + fileName;
+//        File dest = new File(filePath);
+//        file.transferTo(dest);
+//
+//        return filePath;
+//    }
 }
 
 
