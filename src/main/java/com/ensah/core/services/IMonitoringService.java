@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public interface IMonitoringService {
-    public void addMonitoring(Monitoring monitoring);
+    public void addMonitoring(Monitoring monitoring, int nbrMonitors);
 
     public void updateMonitoring(Long idMonitor,Monitoring monitoring);
 

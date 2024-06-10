@@ -25,7 +25,7 @@ public class MonitoringSeviceImpl implements IMonitoringService {
 
 
     //    @Transactional
-    public void addMonitoring(Monitoring monitoring) {
+    public void addMonitoring(Monitoring monitoring,int nbrMonitors) {
         Exam exam = monitoring.getExam();
         if (exam == null) {
             throw new IllegalArgumentException("Exam cannot be null in the monitoring entity");
@@ -38,15 +38,18 @@ public class MonitoringSeviceImpl implements IMonitoringService {
         Educationalelement element = exam.getElement();
         Professor coordinator = element.getCoordinator();
         monitoring.setCoordinator(coordinator);
+
         String startTime = exam.getStartTime();
         String dateExam = monitoring.getDateExam();
-        Long roomId = monitoring.getRoom().getIdRoom(); // Assuming the room ID is available through the exam object
-        Administrator selectedAdministrator = findAvailableAdministrator(roomId, dateExam, startTime, 2);
-        List<Professor> selectedProfessors = findAvailableProfessors(roomId, dateExam, startTime, 2, 2);
-        Set<Professor> professorSet = new HashSet<>(selectedProfessors);
 
-        monitoring.setProfessors(professorSet);
+        Long roomId = monitoring.getRoom().getIdRoom();
+        Administrator selectedAdministrator = findAvailableAdministrator(roomId, dateExam, startTime, 2);
         monitoring.setAdministrator(selectedAdministrator);
+
+        List<Professor> selectedProfessors = findAvailableProfessors(roomId, dateExam, startTime, 2,nbrMonitors);
+        Set<Professor> professorSet = new HashSet<>(selectedProfessors);
+        monitoring.setProfessors(professorSet);
+
         monitoringDao.save(monitoring);
     }
 

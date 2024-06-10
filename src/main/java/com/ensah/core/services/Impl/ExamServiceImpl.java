@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -69,6 +71,39 @@ public class ExamServiceImpl implements IExamService {
     @Override
     public Exam getExamById(Long id) {
         return examDao.findById(id).get();
+    }
+
+    @Override
+    public Exam addDocumentsAfterEXam(Long examId, String report, String  pvFile, String duree) {
+        Optional<Exam> optionalExam = examDao.findById(examId);
+        if (!optionalExam.isPresent()) {
+            throw new RuntimeException("Exam not found with ID: " + examId);
+        }
+
+        Exam exam = optionalExam.get();
+        exam.setRapport(report);
+        exam.setPv(pvFile);
+        exam.setReelDuration(duree);
+//        exam.setPreuve(preuve);
+
+
+
+//        if (report != null && !report.isEmpty()) {
+//            String reportPath = saveFile(report);
+//            exam.setRapport(reportPath);
+//        }
+//
+//        if (pvFile != null && !pvFile.isEmpty()) {
+//            String pvFilePath = saveFile(pvFile);
+//            exam.setPv(pvFilePath);
+//        }
+//
+//        if (preuve != null && !preuve.isEmpty()) {
+//            String examPreuve = saveFile(preuve);
+//            exam.setPreuve(examPreuve);
+//        }
+
+        return examDao.save(exam);
     }
 
 

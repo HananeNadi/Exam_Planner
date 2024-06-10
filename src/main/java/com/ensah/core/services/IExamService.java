@@ -18,8 +18,5 @@ public interface IExamService {
     public Exam getExamById(Long id);
 
 
-
-
-
-
+    Exam addDocumentsAfterEXam(Long examId, String filePath, String filePathpv, String duree);
 }

@@ -21,8 +21,8 @@ public class ExamPlannerApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(IUserDao users, PasswordEncoder encoder) {
 		return args -> {
-			users.save(new User("user",encoder.encode("password"),"ROLE_USER"));
-			users.save(new User("admin",encoder.encode("password"),"ROLE_USER,ROLE_ADMIN"));
+//			users.save(new User("user",encoder.encode("password"),"ROLE_USER"));
+//			users.save(new User("admin",encoder.encode("password"),"ROLE_USER,ROLE_ADMIN"));
 		};
 	}
 

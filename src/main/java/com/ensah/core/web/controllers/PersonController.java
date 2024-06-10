@@ -6,13 +6,19 @@ import com.ensah.core.bo.User;
 import com.ensah.core.dao.IUserDao;
 import com.ensah.core.dto.PersonDTO;
 import com.ensah.core.services.IPersonService;
+import com.ensah.core.utils.ExcelExporter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -73,6 +79,22 @@ public class PersonController {
             password.append(characters.charAt(secureRandom.nextInt(characters.length())));
         }
         return password.toString();
+    }
+
+    @GetMapping("/exportPersons")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=persons_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<Person> persons = personService.getAllPersons(); // Adjust according to your implementation
+        ExcelExporter excelExporter = personService.preparePersonneExport(persons);
+
+        excelExporter.export(response);
     }
 
 }

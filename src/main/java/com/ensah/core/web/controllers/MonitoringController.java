@@ -23,9 +23,13 @@ public class MonitoringController {
 
 
     @PostMapping
-    public ResponseEntity<?> addMonitoringRS(@Valid @RequestBody Monitoring monitoring) {
-        monitoringService.addMonitoring(monitoring);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> addMonitoringRS(@Valid @RequestBody Monitoring monitoring,@RequestParam int nbrMonitors) {
+        try {
+            monitoringService.addMonitoring(monitoring,nbrMonitors);
+            return ResponseEntity.ok("Monitoring added successfully.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Failed to add monitoring: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{monitoringId}")
